@@ -27,3 +27,70 @@ body {
 .font-space-grotesk {
   font-family: var(--font-space-grotesk), sans-serif;
 }
+
+/* Navigation Link Animations */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: theme("colors.orange.500");
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.15s ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  transform: scaleX(1);
+}
+
+/* Press feedback */
+.nav-link:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease-out;
+}
+
+/* First hover wobble effect */
+.nav-link.first-hover:hover {
+  animation: firstHoverWobble 0.24s ease-out;
+}
+
+@keyframes firstHoverWobble {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.03) rotate(1deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .nav-link::after {
+    transition: none;
+  }
+
+  .nav-link:active {
+    transform: none;
+  }
+
+  .nav-link.first-hover:hover {
+    animation: none;
+  }
+
+  .nav-link {
+    transition: color 0.2s ease;
+  }
+}

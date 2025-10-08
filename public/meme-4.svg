@@ -1,0 +1,13 @@
+<svg width="250" height="128" viewBox="0 0 250 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="250" height="128" rx="12" fill="url(#gradient4)"/>
+  <text x="125" y="40" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14">1 BILLION</text>
+  <text x="125" y="60" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14">ORANGE TOKENS</text>
+  <text x="125" y="85" text-anchor="middle" fill="#F97316" font-family="Arial, sans-serif" font-size="16" font-weight="bold">ZERO RUG PULL</text>
+  <text x="125" y="110" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12">100% COMMUNITY</text>
+  <defs>
+    <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5B21B6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
