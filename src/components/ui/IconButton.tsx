@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const iconButtonVariants = cva(
-  "rounded-full flex items-center justify-center",
+  "rounded-full flex items-center justify-center cursor-pointer",
   {
     variants: {
       variant: {

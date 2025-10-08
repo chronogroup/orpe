@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Copy } from "lucide-react";
 import { site } from "@/config/site";
 
 export function ContactAddress() {
@@ -37,7 +38,7 @@ export function ContactAddress() {
       <button
         onClick={handleCopy}
         onKeyDown={handleKeyDown}
-        className={`text-orange-500 text-sm font-mono transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-zinc-900 rounded ${
+        className={`inline-flex items-center space-x-2 text-orange-500 text-sm font-mono transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-zinc-900 rounded cursor-pointer hover:opacity-80 ${
           !hasAnimated ? "animate-pulse" : ""
         }`}
         aria-label={`Copy contract address: ${site.contract}`}
@@ -45,9 +46,16 @@ export function ContactAddress() {
         {copied ? (
           <span className="text-green-400">Copied!</span>
         ) : (
-          <span>
-            CA: {site.contract.slice(0, 6)}...{site.contract.slice(-4)}
-          </span>
+          <>
+            <span>
+              CA: {site.contract.slice(0, 6)}...{site.contract.slice(-4)}
+            </span>
+            <Copy
+              size={14}
+              className="transition-colors duration-200 hover:text-orange-400"
+              aria-label="Copy contract address"
+            />
+          </>
         )}
       </button>
     </div>

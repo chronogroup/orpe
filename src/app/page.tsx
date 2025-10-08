@@ -172,13 +172,13 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-6">
                   <a
                     href="#"
-                    className="flex items-center space-x-3 text-white hover:text-orange-500 transition-colors">
+                    className="flex items-center space-x-3 text-white hover:text-orange-500 transition-colors cursor-pointer">
                     <div className="w-6 h-6 bg-white rounded"></div>
                     <span className="text-lg font-bold">Follow on X</span>
                   </a>
                   <a
                     href="#"
-                    className="flex items-center space-x-3 text-white hover:text-orange-500 transition-colors">
+                    className="flex items-center space-x-3 text-white hover:text-orange-500 transition-colors cursor-pointer">
                     <div className="w-6 h-6 bg-white rounded"></div>
                     <span className="text-lg font-bold">Join Telegram</span>
                   </a>

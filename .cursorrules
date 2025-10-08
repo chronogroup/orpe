@@ -3,7 +3,10 @@
 ## Terminal
 
 - Use the existing terminal tab named "main". Do NOT open additional terminals.
+- NEVER EVER open a new terminal without first closing ALL previous terminals.
+- Before opening any new terminal, ALWAYS kill all existing processes and close all terminal sessions.
 - Never run more than one dev server at a time.
+- If ports are in use, kill all processes using those ports before starting new ones.
 
 ## Framework & Stack
 

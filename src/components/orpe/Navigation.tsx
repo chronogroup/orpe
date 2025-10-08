@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { smoothScrollToSection, getHeaderHeight } from "@/lib/scroll";
 
@@ -15,9 +15,51 @@ interface NavigationProps {
 }
 
 export function Navigation({ items, className = "" }: NavigationProps) {
+  const [activeSection, setActiveSection] = useState<string>("");
+  const [hoveredItems, setHoveredItems] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "-80px 0px -80px 0px", // Account for header height
+      }
+    );
+
+    // Observe all sections
+    items.forEach((item) => {
+      const element = document.getElementById(item.sectionId);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      items.forEach((item) => {
+        const element = document.getElementById(item.sectionId);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, [items]);
+
   const scrollToSection = (sectionId: string) => {
     const headerHeight = getHeaderHeight();
     smoothScrollToSection(sectionId, headerHeight);
+  };
+
+  const handleFirstHover = (sectionId: string) => {
+    if (!hoveredItems.has(sectionId)) {
+      setHoveredItems((prev) => new Set(prev).add(sectionId));
+    }
   };
 
   return (
@@ -26,7 +68,12 @@ export function Navigation({ items, className = "" }: NavigationProps) {
         <button
           key={item.sectionId}
           onClick={() => scrollToSection(item.sectionId)}
-          className="nav-link text-white hover:text-orange-500 transition-all duration-300 focus:outline-none focus:text-orange-500 relative group">
+          onMouseEnter={() => handleFirstHover(item.sectionId)}
+          className={`nav-link focus:outline-none focus:text-orange-500 relative group cursor-pointer ${
+            activeSection === item.sectionId
+              ? "text-orange-500"
+              : "text-white hover:text-orange-500"
+          } ${!hoveredItems.has(item.sectionId) ? "first-hover" : ""}`}>
           {item.label}
         </button>
       ))}

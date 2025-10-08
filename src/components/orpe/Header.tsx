@@ -6,29 +6,22 @@ import { Navigation } from "./Navigation";
 import { ContactAddress } from "./ContactAddress";
 
 export function Header() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Header becomes visible when hero is not intersecting (scrolled past)
-        setIsVisible(!entry.isIntersecting);
-      },
-      {
-        threshold: 0,
-        rootMargin: "0px 0px 0px 0px",
-      }
-    );
+    const handleScroll = () => {
+      // Header becomes sticky immediately when scrolling starts
+      setIsScrolled(window.scrollY > 0);
+    };
 
-    const heroElement = document.getElementById("hero");
-    if (heroElement) {
-      observer.observe(heroElement);
-    }
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Check initial scroll position
+    handleScroll();
 
     return () => {
-      if (heroElement) {
-        observer.unobserve(heroElement);
-      }
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -39,13 +32,13 @@ export function Header() {
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-        isVisible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 -translate-y-full pointer-events-none"
-      }`}>
-      <div className="bg-gradient-to-br from-zinc-900 via-orange-500/10 to-zinc-900 backdrop-blur-sm border-b border-orange-500/20 shadow-lg">
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div
+        className={`transition-all duration-250 ease-in-out ${
+          isScrolled
+            ? "bg-gradient-to-br from-zinc-900 via-orange-500/10 to-zinc-900 backdrop-blur-sm border-b border-orange-500/20 shadow-lg"
+            : "bg-transparent"
+        }`}>
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-20">
           <div className="flex items-center justify-between h-16">
             <Logo />
