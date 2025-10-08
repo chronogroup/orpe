@@ -1,0 +1,42 @@
+# Cursor Project Rules (ORPE)
+
+## Terminal
+
+- Use the existing terminal tab named "main". Do NOT open additional terminals.
+- Never run more than one dev server at a time.
+
+## Framework & Stack
+
+- Next.js App Router in /app, TypeScript strict.
+- Server Components by default; use "use client" only for state/effects/event handlers.
+- TailwindCSS for styling; avoid inline styles except dynamic values.
+- Use next/font for fonts; next/image for images (static import preferred).
+- Route groups for marketing vs. app features: app/(marketing)/, app/(app)/.
+
+## UI System
+
+- Use shadcn/ui primitives when useful; extend with class-variance-authority (CVA) and tailwind-merge.
+- Build composable, prop-driven components. No copy/paste blobs from Figma.
+
+## Code Quality
+
+- TypeScript: "strict": true. No "any". Infer or use zod for external parsing.
+- Accessibility: semantic HTML; aria-\* where appropriate; keyboardable controls.
+- Responsive first: mobile → desktop with Tailwind breakpoints (no absolute layouts from Figma).
+- Design tokens live in tailwind.config.{ts|js}. No hardcoded hex in components.
+
+## Performance
+
+- Keep client bundles small; split heavy client components with next/dynamic.
+- Don't mark components "use client" unless required.
+- Optimize images; use width/height on images; prefer static imports.
+
+## Testing & Tooling
+
+- ESLint + Prettier must pass; run before commit.
+- Vitest + React Testing Library for unit; Playwright for critical flows.
+- Use a single .env.local; never commit secrets.
+
+## Prompts to follow (summary)
+
+- "Refactor JSX from Figma to semantic HTML + Tailwind; remove absolute positioning; use grid/flex; extract repeated UI into components with props; maintain visual fidelity; keep server component unless state is needed."

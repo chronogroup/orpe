@@ -1,0 +1,13 @@
+<svg width="250" height="128" viewBox="0 0 250 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="250" height="128" rx="12" fill="url(#gradient3)"/>
+  <text x="125" y="35" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12">ORPE HOLDERS</text>
+  <text x="125" y="55" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12">BE LIKE:</text>
+  <text x="125" y="80" text-anchor="middle" fill="#F97316" font-family="Arial, sans-serif" font-size="16" font-weight="bold">🍊 NOT 🐸</text>
+  <text x="125" y="105" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12">(we're different)</text>
+  <defs>
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
