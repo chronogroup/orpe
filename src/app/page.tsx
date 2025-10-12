@@ -5,6 +5,7 @@ import { IconButton } from "@/components/ui/IconButton";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Header } from "@/components/orpe/Header";
+import { LoreCarousel } from "@/components/orpe/LoreCarousel";
 
 export default function Home() {
   return (
@@ -57,6 +58,19 @@ export default function Home() {
                 </Button>
               </div>
             </div>
+          </Container>
+        </Section>
+
+        {/* ORPE Lore Carousel */}
+        <Section id="lore" className="py-20 lg:py-32">
+          <Container>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-press-start text-orange-500 mb-4">
+                The Lore of ORPE
+              </h2>
+              <p className="text-xl text-gray-300">Discover the origin story</p>
+            </div>
+            <LoreCarousel />
           </Container>
         </Section>
 

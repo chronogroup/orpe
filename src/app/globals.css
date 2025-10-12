@@ -94,3 +94,27 @@ body {
     transition: color 0.2s ease;
   }
 }
+
+/* Lore Carousel Styles */
+.lore-carousel-container {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  will-change: transform;
+}
+
+.lore-carousel-container.dragging {
+  cursor: grabbing;
+}
+
+.lore-panel {
+  scroll-snap-align: center;
+}
+
+/* Reduced motion support for carousel */
+@media (prefers-reduced-motion: reduce) {
+  .lore-carousel-container {
+    cursor: default;
+  }
+}
