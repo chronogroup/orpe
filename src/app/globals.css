@@ -118,3 +118,82 @@ body {
     cursor: default;
   }
 }
+
+/* Fade Effects */
+.fade-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(24, 24, 27, 1),
+    rgba(24, 24, 27, 0)
+  );
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(24, 24, 27, 1),
+    rgba(24, 24, 27, 0)
+  );
+}
+
+/* Progress Dots */
+.pixel-dot {
+  width: 8px;
+  height: 8px;
+  background: #4b5563;
+  border: 1px solid #6b7280;
+  transition: all 0.3s ease;
+  image-rendering: pixelated;
+  cursor: pointer;
+}
+
+.pixel-dot:hover {
+  transform: scale(1.2);
+  background: #6b7280;
+}
+
+.pixel-dot.active {
+  width: 12px;
+  height: 12px;
+  background: #f97316;
+  border: 2px solid #f97316;
+  box-shadow: 0 0 10px #f97316, 0 0 20px #f97316;
+  animation: dotPulse 1s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Carousel Wrapper */
+.lore-carousel-wrapper {
+  position: relative;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+/* Reduced motion for all animations */
+@media (prefers-reduced-motion: reduce) {
+  .pixel-dot.active {
+    animation: none;
+  }
+}

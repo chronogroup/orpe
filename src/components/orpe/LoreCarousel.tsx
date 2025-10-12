@@ -13,11 +13,13 @@ export function LoreCarousel() {
   const [dragOffset, setDragOffset] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isInViewport, setIsInViewport] = useState(true);
+  const [activePanel, setActivePanel] = useState(0);
 
-  const panelWidth = 600; // Desktop width
-  const gap = 32; // Gap between panels
-  const totalWidth = (panelWidth + gap) * loreStories.length;
-  const scrollSpeed = 0.5; // pixels per frame (60fps = 30px/second)
+  // Constants for better performance
+  const PANEL_WIDTH = 600; // Desktop width
+  const GAP = 32; // Gap between panels
+  const SCROLL_SPEED = 0.5; // pixels per frame (60fps = 30px/second)
+  const totalWidth = (PANEL_WIDTH + GAP) * loreStories.length;
 
   // Intersection Observer to pause when not in viewport
   useEffect(() => {
@@ -35,13 +37,19 @@ export function LoreCarousel() {
     return () => observer.disconnect();
   }, []);
 
+  // Calculate active panel based on scroll position
+  useEffect(() => {
+    const panelIndex = Math.round(scrollPosition / (PANEL_WIDTH + GAP));
+    setActivePanel(Math.min(panelIndex, loreStories.length - 1));
+  }, [scrollPosition]);
+
   // Auto-scroll animation
   useEffect(() => {
     if (isPaused || isDragging || !isInViewport) return;
 
     const animate = () => {
       setScrollPosition((prev) => {
-        const newPosition = prev + scrollSpeed;
+        const newPosition = prev + SCROLL_SPEED;
         // Reset when we've scrolled through one complete set
         return newPosition >= totalWidth ? 0 : newPosition;
       });
@@ -55,7 +63,7 @@ export function LoreCarousel() {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [isPaused, isDragging, isInViewport, scrollSpeed, totalWidth]);
+  }, [isPaused, isDragging, isInViewport, totalWidth]);
 
   // Handle drag start
   const handleDragStart = useCallback((clientX: number) => {
@@ -82,7 +90,7 @@ export function LoreCarousel() {
 
     setIsDragging(false);
     setScrollPosition((prev) => {
-      const newPosition = prev + dragOffset;
+      const newPosition = prev - dragOffset; // Inverted: subtract dragOffset instead of adding
       // Keep position within bounds
       return Math.max(0, Math.min(newPosition, totalWidth));
     });
@@ -137,8 +145,16 @@ export function LoreCarousel() {
     }
   };
 
+  // Navigate to specific panel
+  const scrollToPanel = useCallback((panelIndex: number) => {
+    const targetPosition = panelIndex * (PANEL_WIDTH + GAP);
+    setScrollPosition(targetPosition);
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 2000); // Resume auto-scroll after 2 seconds
+  }, []);
+
   // Create duplicated panels for infinite effect
-  const createPanels = (offset: number) => {
+  const createPanels = useCallback((offset: number) => {
     return loreStories.map((story, index) => (
       <LorePanel
         key={`${offset}-${index}`}
@@ -149,33 +165,52 @@ export function LoreCarousel() {
         index={index}
       />
     ));
-  };
+  }, []);
 
-  const currentTransform = scrollPosition + dragOffset;
+  const currentTransform = scrollPosition - dragOffset;
 
   return (
-    <div
-      ref={containerRef}
-      className="lore-carousel-container relative overflow-hidden"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeaveCarousel}
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}>
+    <div className="lore-carousel-wrapper relative">
+      {/* Main Carousel Container */}
       <div
-        className="flex"
-        style={{
-          transform: `translate3d(-${currentTransform}px, 0, 0)`,
-          width: `${totalWidth * 2}px`, // Double width for seamless loop
-        }}>
-        {/* First set of panels */}
-        {createPanels(0)}
+        ref={containerRef}
+        className="lore-carousel-container relative overflow-hidden"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeaveCarousel}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}>
+        {/* Fade overlays */}
+        <div className="fade-overlay fade-left"></div>
+        <div className="fade-overlay fade-right"></div>
 
-        {/* Second set of panels for infinite effect */}
-        {createPanels(loreStories.length)}
+        <div
+          className="flex"
+          style={{
+            transform: `translate3d(-${currentTransform}px, 0, 0)`,
+            width: `${totalWidth * 2}px`, // Double width for seamless loop
+          }}>
+          {/* First set of panels */}
+          {createPanels(0)}
+
+          {/* Second set of panels for infinite effect */}
+          {createPanels(loreStories.length)}
+        </div>
+      </div>
+
+      {/* Progress Dots */}
+      <div className="flex justify-center items-center gap-2 mt-8">
+        {loreStories.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => scrollToPanel(index)}
+            className={`pixel-dot ${activePanel === index ? "active" : ""}`}
+            aria-label={`Go to panel ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );

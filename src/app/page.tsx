@@ -74,41 +74,6 @@ export default function Home() {
           </Container>
         </Section>
 
-        {/* The Orpe Theory Section */}
-        <Section id="about">
-          <Container>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Text Content */}
-              <div className="space-y-6">
-                <h2 className="text-4xl font-press-start text-orange-500">
-                  The Orpe Theory
-                </h2>
-                <h3 className="text-4xl font-space-grotesk text-white">
-                  The Pond of Apathy
-                </h3>
-                <blockquote className="text-2xl font-space-grotesk text-gray-300 italic">
-                  &ldquo;Every frog looked the same. Every meme felt
-                  tired.&rdquo;
-                </blockquote>
-                <p className="text-lg text-gray-400">
-                  One frog refused to blend in.
-                </p>
-              </div>
-
-              {/* Image */}
-              <div className="flex justify-center lg:justify-end">
-                <Image
-                  className="w-96 h-96 rounded-lg shadow-[0px_0px_20px_0px_rgba(255,122,0,0.50)]"
-                  src="/orpe-frog.png"
-                  alt="ORPE Frog"
-                  width={384}
-                  height={384}
-                />
-              </div>
-            </div>
-          </Container>
-        </Section>
-
         {/* Tokenomics Section */}
         <Section id="tokenomics" variant="gradient">
           <Container>

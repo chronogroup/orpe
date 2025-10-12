@@ -26,7 +26,6 @@ export function Header() {
   }, []);
 
   const navigationItems = [
-    { label: "About", sectionId: "about" },
     { label: "Tokenomics", sectionId: "tokenomics" },
     { label: "Community", sectionId: "community" },
   ];
