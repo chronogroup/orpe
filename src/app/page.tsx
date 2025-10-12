@@ -6,6 +6,7 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Header } from "@/components/orpe/Header";
 import { LoreCarousel } from "@/components/orpe/LoreCarousel";
+import { TokenomicsCard } from "@/components/orpe/TokenomicsCard";
 
 export default function Home() {
   return (
@@ -84,51 +85,50 @@ export default function Home() {
               <p className="text-xl text-gray-300">Simple. Fair. Orange.</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Total Supply Card */}
-              <Card variant="default">
-                <IconButton
-                  variant="orange"
-                  size="default"
-                  className="mx-auto mb-6">
-                  1B
-                </IconButton>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Total Supply
-                </h3>
-                <p className="text-3xl font-bold text-orange-500 mb-2">1B</p>
-                <p className="text-gray-400">ORPE Tokens</p>
-              </Card>
+              <TokenomicsCard
+                title="Total Supply"
+                value={1000000000}
+                description="ORPE Tokens"
+                icon="1B"
+                variant="default"
+                verificationLink="#etherscan"
+                verificationLabel="View on Etherscan"
+              />
 
               {/* Liquidity Card */}
-              <Card variant="teal">
-                <IconButton
-                  variant="teal"
-                  size="default"
-                  className="mx-auto mb-6">
-                  ✅
-                </IconButton>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Liquidity
-                </h3>
-                <p className="text-3xl font-bold text-teal-500 mb-2">✅</p>
-                <p className="text-gray-400">Locked Forever</p>
-              </Card>
+              <TokenomicsCard
+                title="Liquidity"
+                value={100}
+                description="Locked Forever"
+                icon="✅"
+                variant="teal"
+                verificationLink="#unicrypt"
+                verificationLabel="Verify Lock"
+              />
 
               {/* Team Wallet Card */}
-              <Card variant="gray">
-                <IconButton
-                  variant="gray"
-                  size="default"
-                  className="mx-auto mb-6">
-                  0%
-                </IconButton>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Team Wallet
-                </h3>
-                <p className="text-3xl font-bold text-gray-400 mb-2">0%</p>
-                <p className="text-gray-400">Community Owned</p>
-              </Card>
+              <TokenomicsCard
+                title="Team Wallet"
+                value={0}
+                description="Community Owned"
+                icon="0%"
+                variant="gray"
+                verificationLink="#wallet"
+                verificationLabel="Check Wallet"
+              />
+
+              {/* Governance Card */}
+              <TokenomicsCard
+                title="Governance"
+                value={100}
+                description="100% Holder-Led, No Dev Control"
+                icon="🗳️"
+                variant="purple"
+                verificationLink="#governance"
+                verificationLabel="View Governance"
+              />
             </div>
           </Container>
         </Section>
