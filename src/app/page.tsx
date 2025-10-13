@@ -7,6 +7,10 @@ import { Container } from "@/components/ui/Container";
 import { Header } from "@/components/orpe/Header";
 import { LoreCarousel } from "@/components/orpe/LoreCarousel";
 import { TokenomicsCard } from "@/components/orpe/TokenomicsCard";
+import { CommunityStats } from "@/components/orpe/CommunityStats";
+import { MemeGallery } from "@/components/orpe/MemeGallery";
+import { SocialButtons } from "@/components/orpe/SocialButtons";
+import { Footer } from "@/components/orpe/Footer";
 
 export default function Home() {
   return (
@@ -18,12 +22,12 @@ export default function Home() {
         <Section id="hero" variant="hero">
           <Container>
             <div className="text-center">
-              {/* Logo */}
+              {/* Hero Image */}
               <div className="mb-8">
                 <Image
-                  className="w-48 h-48 mx-auto rounded-full shadow-[0px_25px_50px_0px_rgba(0,0,0,0.25)] border-4 border-orange-500"
-                  src="/orpe-logo.png"
-                  alt="ORPE Logo"
+                  className="w-48 h-48 mx-auto rounded-full shadow-[0px_25px_50px_0px_rgba(0,0,0,0.25)] border-4 border-orange-500 object-cover"
+                  src="/Hero image.png"
+                  alt="ORPE Hero - Orange Pepe leading the community"
                   width={192}
                   height={192}
                 />
@@ -135,131 +139,36 @@ export default function Home() {
 
         {/* Community Section */}
         <Section id="community">
-          <Container>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-press-start text-orange-500 mb-4">
-                Join the Community
-              </h2>
-              <p className="text-xl text-gray-300">
-                Connect with fellow orange enthusiasts
-              </p>
-            </div>
+          <div className="relative">
+            {/* Radial Gradient Background */}
+            <div className="absolute inset-0 community-radial-bg pointer-events-none" />
 
-            <div className="grid lg:grid-cols-2 gap-12">
-              {/* Community Stats */}
-              <div className="space-y-8">
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <a
-                    href="#"
-                    className="flex items-center space-x-3 text-white hover:text-orange-500 transition-colors cursor-pointer">
-                    <div className="w-6 h-6 bg-white rounded"></div>
-                    <span className="text-lg font-bold">Follow on X</span>
-                  </a>
-                  <a
-                    href="#"
-                    className="flex items-center space-x-3 text-white hover:text-orange-500 transition-colors cursor-pointer">
-                    <div className="w-6 h-6 bg-white rounded"></div>
-                    <span className="text-lg font-bold">Join Telegram</span>
-                  </a>
-                </div>
-
-                <Card variant="stats">
-                  <h3 className="text-2xl font-bold text-orange-500 mb-6">
-                    Community Stats
-                  </h3>
-                  <div className="grid grid-cols-2 gap-6">
-                    <div>
-                      <p className="text-3xl font-bold text-white">12.5K</p>
-                      <p className="text-gray-400">Holders</p>
-                    </div>
-                    <div>
-                      <p className="text-3xl font-bold text-white">8.2K</p>
-                      <p className="text-gray-400">Telegram Members</p>
-                    </div>
-                  </div>
-                </Card>
+            <Container>
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-press-start text-orange-500 mb-4">
+                  Join the Community
+                </h2>
+                <p className="text-xl text-gray-300">
+                  Connect with fellow orange enthusiasts
+                </p>
               </div>
 
-              {/* Meme Gallery */}
-              <Card variant="default">
-                <h3 className="text-2xl font-bold text-white text-center mb-8">
-                  Meme Gallery
-                </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <Image
-                    className="w-full h-32 rounded-xl border border-orange-500/20 object-cover"
-                    src="/meme-1.svg"
-                    alt="Orange is the new green meme"
-                    width={250}
-                    height={128}
-                  />
-                  <Image
-                    className="w-full h-32 rounded-xl border border-orange-500/20 object-cover"
-                    src="/meme-2.svg"
-                    alt="HODL to the moon meme"
-                    width={250}
-                    height={128}
-                  />
-                  <Image
-                    className="w-full h-32 rounded-xl border border-orange-500/20 object-cover"
-                    src="/meme-3.svg"
-                    alt="Orange not frog meme"
-                    width={250}
-                    height={128}
-                  />
-                  <Image
-                    className="w-full h-32 rounded-xl border border-orange-500/20 object-cover"
-                    src="/meme-4.svg"
-                    alt="Community owned meme"
-                    width={250}
-                    height={128}
-                  />
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {/* Left Column - Social Buttons & Stats */}
+                <div className="space-y-8">
+                  <SocialButtons />
+                  <CommunityStats holders={12500} telegramMembers={8200} />
                 </div>
-              </Card>
-            </div>
-          </Container>
+
+                {/* Right Column - Meme Gallery */}
+                <MemeGallery />
+              </div>
+            </Container>
+          </div>
         </Section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-zinc-900 border-t border-orange-500/20 py-16">
-        <Container>
-          <div className="text-center space-y-8">
-            {/* Contract Address */}
-            <div className="bg-orange-500/10 rounded-2xl border border-orange-500/20 p-8 max-w-2xl mx-auto">
-              <h3 className="text-lg font-bold text-white mb-4">
-                Contract Address
-              </h3>
-              <div className="bg-zinc-900 rounded-lg p-4">
-                <p className="text-orange-500 font-mono text-sm break-all">
-                  0x1234567890abcdef1234567890abcdef12345678
-                </p>
-              </div>
-            </div>
-
-            {/* Disclaimer */}
-            <div className="space-y-4">
-              <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-                For entertainment purposes only. Do not mortgage your house to
-                buy oranges.
-              </p>
-              <p className="text-orange-500 font-press-start">
-                Powered by degeneracy.
-              </p>
-            </div>
-
-            {/* Copyright */}
-            <div className="flex items-center justify-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-400 rounded-full flex items-center justify-center">
-                <span className="text-zinc-900 text-sm font-bold">O</span>
-              </div>
-              <span className="text-orange-500 font-press-start">
-                ORPE 2024
-              </span>
-            </div>
-          </div>
-        </Container>
-      </footer>
+      <Footer />
     </div>
   );
 }

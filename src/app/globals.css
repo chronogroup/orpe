@@ -295,3 +295,150 @@ body {
     transform: none;
   }
 }
+
+/* Community Section Styles */
+.community-radial-bg {
+  background: radial-gradient(
+    circle at center,
+    rgba(249, 115, 22, 0.1) 0%,
+    transparent 70%
+  );
+}
+
+.social-btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.social-btn-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.social-btn-glow:hover::before {
+  left: 100%;
+}
+
+.social-btn-glow:hover {
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+}
+
+/* Unified Card Styles */
+.community-card {
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Reduced motion for community animations */
+@media (prefers-reduced-motion: reduce) {
+  .social-btn-glow::before {
+    display: none;
+  }
+
+  .social-btn-glow:hover {
+    box-shadow: none;
+  }
+}
+
+/* Footer QR Panel Animations */
+.qr-panel {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  max-height: 0;
+  opacity: 0;
+}
+
+.qr-panel.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.qr-panel-content {
+  transform: translateY(-10px);
+  transition: transform 0.3s ease-out;
+}
+
+.qr-panel.open .qr-panel-content {
+  transform: translateY(0);
+}
+
+/* Footer Button Hover States */
+.footer-copy-btn {
+  transition: all 0.2s ease;
+}
+
+.footer-copy-btn:hover {
+  background-color: rgba(249, 115, 22, 0.1);
+  transform: translateY(-1px);
+}
+
+.footer-explorer-btn {
+  transition: all 0.2s ease;
+}
+
+.footer-explorer-btn:hover {
+  background-color: rgba(249, 115, 22, 0.1);
+  transform: translateY(-1px);
+}
+
+.footer-qr-toggle {
+  transition: all 0.2s ease;
+}
+
+.footer-qr-toggle:hover {
+  color: theme("colors.orange.500");
+  transform: translateY(-1px);
+}
+
+/* Address Container Scroll */
+.address-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(249, 115, 22, 0.3) transparent;
+}
+
+.address-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+.address-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.address-container::-webkit-scrollbar-thumb {
+  background-color: rgba(249, 115, 22, 0.3);
+  border-radius: 2px;
+}
+
+.address-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(249, 115, 22, 0.5);
+}
+
+/* Reduced motion for footer animations */
+@media (prefers-reduced-motion: reduce) {
+  .qr-panel {
+    transition: none;
+  }
+
+  .qr-panel-content {
+    transition: none;
+  }
+
+  .footer-copy-btn:hover,
+  .footer-explorer-btn:hover,
+  .footer-qr-toggle:hover {
+    transform: none;
+  }
+}

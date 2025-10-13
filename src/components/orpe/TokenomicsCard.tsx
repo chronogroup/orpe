@@ -67,7 +67,13 @@ export function TokenomicsCard({
         className="h-full flex flex-col justify-between">
         <div className="flex flex-col items-center text-center">
           <IconButton
-            variant={variant === "purple" ? "gray" : variant}
+            variant={
+              variant === "purple"
+                ? "gray"
+                : variant === "default"
+                ? "orange"
+                : variant
+            }
             size="default"
             className="mx-auto mb-6">
             {icon}
