@@ -1,0 +1,196 @@
+"use client";
+
+import { useState, useCallback } from "react";
+import { Copy, ExternalLink, QrCode, Check } from "lucide-react";
+import { site } from "@/config/site";
+
+// Lazy-loaded QR code component
+const QRCode = ({ value }: { value: string }) => {
+  const [QRCodeComponent, setQRCodeComponent] =
+    useState<React.ComponentType<any> | null>(null);
+
+  useState(() => {
+    import("react-qr-code").then((module) => {
+      setQRCodeComponent(() => module.default);
+    });
+  });
+
+  if (!QRCodeComponent) {
+    return (
+      <div className="flex items-center justify-center p-8">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500"></div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex justify-center p-4 bg-white rounded-lg">
+      <QRCodeComponent
+        value={value}
+        size={200}
+        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+      />
+    </div>
+  );
+};
+
+// Utility function to truncate address in the middle
+const middleTruncate = (address: string, left = 6, right = 4): string => {
+  if (address.length <= left + right) return address;
+  return `${address.slice(0, left)}...${address.slice(-right)}`;
+};
+
+// Utility function to build explorer URL
+const buildExplorerUrl = (explorerBase: string, contract: string): string => {
+  return `${explorerBase}/address/${contract}?utm_source=orpe-site&utm_medium=footer`;
+};
+
+export function Footer() {
+  const [copied, setCopied] = useState(false);
+  const [showQR, setShowQR] = useState(false);
+
+  const handleCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(site.contract);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  }, []);
+
+  const handleKeyDown = (e: React.KeyboardEvent, action: () => void) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      action();
+    }
+  };
+
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer
+      className="bg-zinc-900 border-t border-orange-500/20 py-16"
+      aria-label="Site footer">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center space-y-8">
+          {/* Contract Address Section */}
+          <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-orange-500/20 p-8 max-w-2xl mx-auto">
+            <h3 className="text-lg font-bold text-white mb-6">
+              Contract Address
+            </h3>
+
+            {/* Chain Badge */}
+            <div className="flex items-center justify-center mb-4">
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/30">
+                <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                <span className="text-orange-500 text-sm font-medium">
+                  {site.chain.name}
+                </span>
+              </div>
+            </div>
+
+            {/* Address Container */}
+            <div className="bg-zinc-900 rounded-lg p-4 mb-6">
+              <div className="address-container overflow-x-auto">
+                <p className="text-orange-500 font-mono text-sm whitespace-nowrap">
+                  {site.contract}
+                </p>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              {/* Copy Button */}
+              <button
+                onClick={handleCopy}
+                onKeyDown={(e) => handleKeyDown(e, handleCopy)}
+                className="footer-copy-btn inline-flex items-center justify-center px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-lg text-orange-500 text-sm font-medium hover:bg-orange-500/20 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-zinc-900 transition-all duration-200"
+                aria-label={`Copy contract address: ${site.contract}`}
+                aria-live="polite">
+                {copied ? (
+                  <>
+                    <Check size={16} className="mr-2" />
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <Copy size={16} className="mr-2" />
+                    Copy Address
+                  </>
+                )}
+              </button>
+
+              {/* Explorer Button */}
+              <a
+                href={buildExplorerUrl(site.chain.explorerBase, site.contract)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-explorer-btn inline-flex items-center justify-center px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-lg text-orange-500 text-sm font-medium hover:bg-orange-500/20 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-zinc-900 transition-all duration-200">
+                <ExternalLink size={16} className="mr-2" />
+                View on {site.chain.explorerName}
+              </a>
+
+              {/* QR Toggle Button */}
+              <button
+                onClick={() => setShowQR(!showQR)}
+                onKeyDown={(e) => handleKeyDown(e, () => setShowQR(!showQR))}
+                className="footer-qr-toggle inline-flex items-center justify-center px-4 py-2 text-gray-400 text-sm font-medium hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-zinc-900 transition-all duration-200"
+                aria-label={showQR ? "Hide QR code" : "Show QR code"}
+                aria-expanded={showQR}
+                aria-controls="qr-panel">
+                <QrCode size={16} className="mr-2" />
+                {showQR ? "Hide QR" : "Show QR"}
+              </button>
+            </div>
+
+            {/* QR Code Panel */}
+            <div
+              id="qr-panel"
+              className={`qr-panel ${showQR ? "open" : ""}`}
+              aria-hidden={!showQR}>
+              <div className="qr-panel-content mt-4">
+                <QRCode value={site.contract} />
+              </div>
+            </div>
+          </div>
+
+          {/* Disclaimer */}
+          <div className="space-y-4">
+            <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+              This is not financial advice. Always verify the contract address.
+              Never share your seed phrase.
+            </p>
+            <p className="text-orange-500 font-press-start text-sm">
+              Powered by degeneracy.
+            </p>
+          </div>
+
+          {/* Footer Strip */}
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+            {/* Copyright */}
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-400 rounded-full flex items-center justify-center">
+                <span className="text-zinc-900 text-sm font-bold">O</span>
+              </div>
+              <span className="text-orange-500 font-press-start text-sm">
+                ORPE 2024–{currentYear}
+              </span>
+            </div>
+
+            {/* Verified Badge */}
+            {site.chain.verified && (
+              <a
+                href={`${site.chain.explorerBase}/address/${site.contract}#code`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-gray-400 hover:text-orange-500 transition-colors duration-200">
+                Verified on {site.chain.explorerName}
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

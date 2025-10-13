@@ -5,6 +5,12 @@ import { IconButton } from "@/components/ui/IconButton";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Header } from "@/components/orpe/Header";
+import { LoreCarousel } from "@/components/orpe/LoreCarousel";
+import { TokenomicsCard } from "@/components/orpe/TokenomicsCard";
+import { CommunityStats } from "@/components/orpe/CommunityStats";
+import { MemeGallery } from "@/components/orpe/MemeGallery";
+import { SocialButtons } from "@/components/orpe/SocialButtons";
+import { Footer } from "@/components/orpe/Footer";
 
 export default function Home() {
   return (
@@ -16,12 +22,12 @@ export default function Home() {
         <Section id="hero" variant="hero">
           <Container>
             <div className="text-center">
-              {/* Logo */}
+              {/* Hero Image */}
               <div className="mb-8">
                 <Image
-                  className="w-48 h-48 mx-auto rounded-full shadow-[0px_25px_50px_0px_rgba(0,0,0,0.25)] border-4 border-orange-500"
-                  src="/orpe-logo.png"
-                  alt="ORPE Logo"
+                  className="w-48 h-48 mx-auto rounded-full shadow-[0px_25px_50px_0px_rgba(0,0,0,0.25)] border-4 border-orange-500 object-cover"
+                  src="/Hero image.png"
+                  alt="ORPE Hero - Orange Pepe leading the community"
                   width={192}
                   height={192}
                 />
@@ -60,38 +66,16 @@ export default function Home() {
           </Container>
         </Section>
 
-        {/* The Orpe Theory Section */}
-        <Section id="about">
+        {/* ORPE Lore Carousel */}
+        <Section id="lore" className="py-20 lg:py-32">
           <Container>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Text Content */}
-              <div className="space-y-6">
-                <h2 className="text-4xl font-press-start text-orange-500">
-                  The Orpe Theory
-                </h2>
-                <h3 className="text-4xl font-space-grotesk text-white">
-                  The Pond of Apathy
-                </h3>
-                <blockquote className="text-2xl font-space-grotesk text-gray-300 italic">
-                  &ldquo;Every frog looked the same. Every meme felt
-                  tired.&rdquo;
-                </blockquote>
-                <p className="text-lg text-gray-400">
-                  One frog refused to blend in.
-                </p>
-              </div>
-
-              {/* Image */}
-              <div className="flex justify-center lg:justify-end">
-                <Image
-                  className="w-96 h-96 rounded-lg shadow-[0px_0px_20px_0px_rgba(255,122,0,0.50)]"
-                  src="/orpe-frog.png"
-                  alt="ORPE Frog"
-                  width={384}
-                  height={384}
-                />
-              </div>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-press-start text-orange-500 mb-4">
+                The Lore of ORPE
+              </h2>
+              <p className="text-xl text-gray-300">Discover the origin story</p>
             </div>
+            <LoreCarousel />
           </Container>
         </Section>
 
@@ -105,182 +89,86 @@ export default function Home() {
               <p className="text-xl text-gray-300">Simple. Fair. Orange.</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Total Supply Card */}
-              <Card variant="default">
-                <IconButton
-                  variant="orange"
-                  size="default"
-                  className="mx-auto mb-6">
-                  1B
-                </IconButton>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Total Supply
-                </h3>
-                <p className="text-3xl font-bold text-orange-500 mb-2">1B</p>
-                <p className="text-gray-400">ORPE Tokens</p>
-              </Card>
+              <TokenomicsCard
+                title="Total Supply"
+                value={1000000000}
+                description="ORPE Tokens"
+                icon="1B"
+                variant="default"
+                verificationLink="#etherscan"
+                verificationLabel="View on Etherscan"
+              />
 
               {/* Liquidity Card */}
-              <Card variant="teal">
-                <IconButton
-                  variant="teal"
-                  size="default"
-                  className="mx-auto mb-6">
-                  ✅
-                </IconButton>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Liquidity
-                </h3>
-                <p className="text-3xl font-bold text-teal-500 mb-2">✅</p>
-                <p className="text-gray-400">Locked Forever</p>
-              </Card>
+              <TokenomicsCard
+                title="Liquidity"
+                value={100}
+                description="Locked Forever"
+                icon="✅"
+                variant="teal"
+                verificationLink="#unicrypt"
+                verificationLabel="Verify Lock"
+              />
 
               {/* Team Wallet Card */}
-              <Card variant="gray">
-                <IconButton
-                  variant="gray"
-                  size="default"
-                  className="mx-auto mb-6">
-                  0%
-                </IconButton>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Team Wallet
-                </h3>
-                <p className="text-3xl font-bold text-gray-400 mb-2">0%</p>
-                <p className="text-gray-400">Community Owned</p>
-              </Card>
+              <TokenomicsCard
+                title="Team Wallet"
+                value={0}
+                description="Community Owned"
+                icon="0%"
+                variant="gray"
+                verificationLink="#wallet"
+                verificationLabel="Check Wallet"
+              />
+
+              {/* Governance Card */}
+              <TokenomicsCard
+                title="Governance"
+                value={100}
+                description="100% Holder-Led, No Dev Control"
+                icon="🗳️"
+                variant="purple"
+                verificationLink="#governance"
+                verificationLabel="View Governance"
+              />
             </div>
           </Container>
         </Section>
 
         {/* Community Section */}
         <Section id="community">
-          <Container>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-press-start text-orange-500 mb-4">
-                Join the Community
-              </h2>
-              <p className="text-xl text-gray-300">
-                Connect with fellow orange enthusiasts
-              </p>
-            </div>
+          <div className="relative">
+            {/* Radial Gradient Background */}
+            <div className="absolute inset-0 community-radial-bg pointer-events-none" />
 
-            <div className="grid lg:grid-cols-2 gap-12">
-              {/* Community Stats */}
-              <div className="space-y-8">
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <a
-                    href="#"
-                    className="flex items-center space-x-3 text-white hover:text-orange-500 transition-colors cursor-pointer">
-                    <div className="w-6 h-6 bg-white rounded"></div>
-                    <span className="text-lg font-bold">Follow on X</span>
-                  </a>
-                  <a
-                    href="#"
-                    className="flex items-center space-x-3 text-white hover:text-orange-500 transition-colors cursor-pointer">
-                    <div className="w-6 h-6 bg-white rounded"></div>
-                    <span className="text-lg font-bold">Join Telegram</span>
-                  </a>
-                </div>
-
-                <Card variant="stats">
-                  <h3 className="text-2xl font-bold text-orange-500 mb-6">
-                    Community Stats
-                  </h3>
-                  <div className="grid grid-cols-2 gap-6">
-                    <div>
-                      <p className="text-3xl font-bold text-white">12.5K</p>
-                      <p className="text-gray-400">Holders</p>
-                    </div>
-                    <div>
-                      <p className="text-3xl font-bold text-white">8.2K</p>
-                      <p className="text-gray-400">Telegram Members</p>
-                    </div>
-                  </div>
-                </Card>
+            <Container>
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-press-start text-orange-500 mb-4">
+                  Join the Community
+                </h2>
+                <p className="text-xl text-gray-300">
+                  Connect with fellow orange enthusiasts
+                </p>
               </div>
 
-              {/* Meme Gallery */}
-              <Card variant="default">
-                <h3 className="text-2xl font-bold text-white text-center mb-8">
-                  Meme Gallery
-                </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <Image
-                    className="w-full h-32 rounded-xl border border-orange-500/20 object-cover"
-                    src="/meme-1.svg"
-                    alt="Orange is the new green meme"
-                    width={250}
-                    height={128}
-                  />
-                  <Image
-                    className="w-full h-32 rounded-xl border border-orange-500/20 object-cover"
-                    src="/meme-2.svg"
-                    alt="HODL to the moon meme"
-                    width={250}
-                    height={128}
-                  />
-                  <Image
-                    className="w-full h-32 rounded-xl border border-orange-500/20 object-cover"
-                    src="/meme-3.svg"
-                    alt="Orange not frog meme"
-                    width={250}
-                    height={128}
-                  />
-                  <Image
-                    className="w-full h-32 rounded-xl border border-orange-500/20 object-cover"
-                    src="/meme-4.svg"
-                    alt="Community owned meme"
-                    width={250}
-                    height={128}
-                  />
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {/* Left Column - Social Buttons & Stats */}
+                <div className="space-y-8">
+                  <SocialButtons />
+                  <CommunityStats holders={12500} telegramMembers={8200} />
                 </div>
-              </Card>
-            </div>
-          </Container>
+
+                {/* Right Column - Meme Gallery */}
+                <MemeGallery />
+              </div>
+            </Container>
+          </div>
         </Section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-zinc-900 border-t border-orange-500/20 py-16">
-        <Container>
-          <div className="text-center space-y-8">
-            {/* Contract Address */}
-            <div className="bg-orange-500/10 rounded-2xl border border-orange-500/20 p-8 max-w-2xl mx-auto">
-              <h3 className="text-lg font-bold text-white mb-4">
-                Contract Address
-              </h3>
-              <div className="bg-zinc-900 rounded-lg p-4">
-                <p className="text-orange-500 font-mono text-sm break-all">
-                  0x1234567890abcdef1234567890abcdef12345678
-                </p>
-              </div>
-            </div>
-
-            {/* Disclaimer */}
-            <div className="space-y-4">
-              <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-                For entertainment purposes only. Do not mortgage your house to
-                buy oranges.
-              </p>
-              <p className="text-orange-500 font-press-start">
-                Powered by degeneracy.
-              </p>
-            </div>
-
-            {/* Copyright */}
-            <div className="flex items-center justify-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-400 rounded-full flex items-center justify-center">
-                <span className="text-zinc-900 text-sm font-bold">O</span>
-              </div>
-              <span className="text-orange-500 font-press-start">
-                ORPE 2024
-              </span>
-            </div>
-          </div>
-        </Container>
-      </footer>
+      <Footer />
     </div>
   );
 }

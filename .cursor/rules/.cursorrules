@@ -1,0 +1,62 @@
+# Cursor Project Rules (ORPE)
+
+## Terminal
+
+- Use the existing terminal tab named "main". Do NOT open additional terminals.
+- NEVER EVER EVER open a new terminal without first closing ALL previous terminals.
+- Before opening any new terminal, ALWAYS kill all existing processes and close all terminal sessions.
+- Never run more than one dev server at a time.
+- If ports are in use, kill all processes using those ports before starting new ones.
+
+## Framework & Stack
+
+- Next.js App Router located in `/app`, using TypeScript with `"strict": true`.
+- Server Components by default; use `"use client"` only when state, effects, or event handlers are required.
+- TailwindCSS for styling; avoid inline styles except when dynamically computed.
+- Use `next/font` for fonts and `next/image` for images (prefer static imports).
+- Route groups for marketing vs. app features: `app/(marketing)/` and `app/(app)/`.
+
+## UI System
+
+- Use `shadcn/ui` primitives when appropriate; extend with `class-variance-authority (CVA)` and `tailwind-merge`.
+- Build composable, prop-driven components. Do not copy/paste Figma exports directly.
+- Keep components small, reusable, and themable using design tokens.
+
+## Styling and Responsiveness
+
+- All styles added or modified in this project must be **fully responsive** and optimized for all screen sizes (mobile, tablet, desktop).
+- Always design and implement **mobile-first** using Tailwind’s responsive utilities (`sm:`, `md:`, `lg:`, `xl:`).
+- Ensure layouts scale gracefully across breakpoints without overflow, clipping, or layout shift.
+- Avoid fixed pixel widths or heights unless absolutely necessary.
+- Test all new components at multiple viewport sizes before marking them complete.
+- Do not add hardcoded values for spacing, color, or typography; use design tokens defined in `tailwind.config.{ts|js}`.
+
+## Code Quality
+
+- TypeScript must remain in strict mode; never use `any`. Use inference or `zod` for validation and external parsing.
+- Accessibility: semantic HTML elements, proper `aria-*` attributes, and full keyboard navigation support.
+- Follow component-driven development: extract repeating UI into composable, prop-based components.
+- Maintain consistent naming, indentation, and formatting with ESLint + Prettier.
+
+## Performance
+
+- Keep client bundles small; dynamically import heavy client components with `next/dynamic`.
+- Avoid unnecessary `"use client"` directives—use only when interactivity is required.
+- Optimize all images; include explicit `width` and `height`; prefer static imports.
+- Minimize layout shifts and use GPU-accelerated CSS transforms where possible.
+- Apply lazy loading and code-splitting to improve initial page performance.
+
+## Testing & Tooling
+
+- ESLint and Prettier must pass before commit.
+- Use Vitest + React Testing Library for unit tests; Playwright for end-to-end tests.
+- Only one `.env.local` file is permitted; never commit API keys or secrets.
+
+## Prompts to Follow (Summary)
+
+- “Refactor JSX from Figma to semantic HTML + Tailwind.
+  Remove absolute positioning.
+  Use grid/flex layouts.
+  Extract repeated UI into components with props.
+  Maintain visual fidelity.
+  Keep as a Server Component unless interactivity requires otherwise.”

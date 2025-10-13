@@ -94,3 +94,351 @@ body {
     transition: color 0.2s ease;
   }
 }
+
+/* Lore Carousel Styles */
+.lore-carousel-container {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  will-change: transform;
+}
+
+.lore-carousel-container.dragging {
+  cursor: grabbing;
+}
+
+.lore-panel {
+  scroll-snap-align: center;
+}
+
+/* Reduced motion support for carousel */
+@media (prefers-reduced-motion: reduce) {
+  .lore-carousel-container {
+    cursor: default;
+  }
+}
+
+/* Fade Effects */
+.fade-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(24, 24, 27, 1),
+    rgba(24, 24, 27, 0)
+  );
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(24, 24, 27, 1),
+    rgba(24, 24, 27, 0)
+  );
+}
+
+/* Progress Dots */
+.pixel-dot {
+  width: 8px;
+  height: 8px;
+  background: #4b5563;
+  border: 1px solid #6b7280;
+  transition: all 0.3s ease;
+  image-rendering: pixelated;
+  cursor: pointer;
+}
+
+.pixel-dot:hover {
+  transform: scale(1.2);
+  background: #6b7280;
+}
+
+.pixel-dot.active {
+  width: 12px;
+  height: 12px;
+  background: #f97316;
+  border: 2px solid #f97316;
+  box-shadow: 0 0 10px #f97316, 0 0 20px #f97316;
+  animation: dotPulse 1s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Carousel Wrapper */
+.lore-carousel-wrapper {
+  position: relative;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+/* Tokenomics Animations */
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(249, 115, 22, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tokenomics Background Shimmer - Removed continuous animation */
+.tokenomics-bg-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(249, 115, 22, 0.05),
+    transparent
+  );
+  background-size: 200% 100%;
+}
+
+/* Card Hover Random Movement Effect */
+.card-hover-tilt {
+  transition: transform 0.3s ease;
+  min-height: 400px;
+}
+
+/* Random movement directions for each card */
+.card-hover-tilt:nth-child(1):hover {
+  transform: translate(-5px, -8px) rotate(-2deg);
+}
+
+.card-hover-tilt:nth-child(2):hover {
+  transform: translate(8px, -5px) rotate(3deg);
+}
+
+.card-hover-tilt:nth-child(3):hover {
+  transform: translate(-3px, 6px) rotate(-1deg);
+}
+
+.card-hover-tilt:nth-child(4):hover {
+  transform: translate(6px, 4px) rotate(2deg);
+}
+
+/* Fade In Up Animation */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.fade-in-up:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.fade-in-up:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.fade-in-up:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.fade-in-up:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Reduced motion for all animations */
+@media (prefers-reduced-motion: reduce) {
+  .pixel-dot.active {
+    animation: none;
+  }
+
+  .fade-in-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-hover-tilt:nth-child(1):hover,
+  .card-hover-tilt:nth-child(2):hover,
+  .card-hover-tilt:nth-child(3):hover,
+  .card-hover-tilt:nth-child(4):hover {
+    transform: none;
+  }
+}
+
+/* Community Section Styles */
+.community-radial-bg {
+  background: radial-gradient(
+    circle at center,
+    rgba(249, 115, 22, 0.1) 0%,
+    transparent 70%
+  );
+}
+
+.social-btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.social-btn-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.social-btn-glow:hover::before {
+  left: 100%;
+}
+
+.social-btn-glow:hover {
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+}
+
+/* Unified Card Styles */
+.community-card {
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Reduced motion for community animations */
+@media (prefers-reduced-motion: reduce) {
+  .social-btn-glow::before {
+    display: none;
+  }
+
+  .social-btn-glow:hover {
+    box-shadow: none;
+  }
+}
+
+/* Footer QR Panel Animations */
+.qr-panel {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  max-height: 0;
+  opacity: 0;
+}
+
+.qr-panel.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.qr-panel-content {
+  transform: translateY(-10px);
+  transition: transform 0.3s ease-out;
+}
+
+.qr-panel.open .qr-panel-content {
+  transform: translateY(0);
+}
+
+/* Footer Button Hover States */
+.footer-copy-btn {
+  transition: all 0.2s ease;
+}
+
+.footer-copy-btn:hover {
+  background-color: rgba(249, 115, 22, 0.1);
+  transform: translateY(-1px);
+}
+
+.footer-explorer-btn {
+  transition: all 0.2s ease;
+}
+
+.footer-explorer-btn:hover {
+  background-color: rgba(249, 115, 22, 0.1);
+  transform: translateY(-1px);
+}
+
+.footer-qr-toggle {
+  transition: all 0.2s ease;
+}
+
+.footer-qr-toggle:hover {
+  color: theme("colors.orange.500");
+  transform: translateY(-1px);
+}
+
+/* Address Container Scroll */
+.address-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(249, 115, 22, 0.3) transparent;
+}
+
+.address-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+.address-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.address-container::-webkit-scrollbar-thumb {
+  background-color: rgba(249, 115, 22, 0.3);
+  border-radius: 2px;
+}
+
+.address-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(249, 115, 22, 0.5);
+}
+
+/* Reduced motion for footer animations */
+@media (prefers-reduced-motion: reduce) {
+  .qr-panel {
+    transition: none;
+  }
+
+  .qr-panel-content {
+    transition: none;
+  }
+
+  .footer-copy-btn:hover,
+  .footer-explorer-btn:hover,
+  .footer-qr-toggle:hover {
+    transform: none;
+  }
+}
