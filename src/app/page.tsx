@@ -35,7 +35,7 @@ export default function Home() {
 
               {/* Title */}
               <h1 className="text-6xl lg:text-8xl font-press-start text-orange-500 mb-6">
-                ORPE
+                Orange Pepe
               </h1>
 
               {/* Subtitle */}

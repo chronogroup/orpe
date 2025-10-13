@@ -158,8 +158,14 @@ export function Footer() {
           {/* Disclaimer */}
           <div className="space-y-4">
             <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-              This is not financial advice. Always verify the contract address.
-              Never share your seed phrase.
+              <strong>DISCLAIMER:</strong> $ORPE IS A MEME TOKEN FOR
+              ENTERTAINMENT ONLY. IT HAS NO INHERENT VALUE AND IS NOT AN
+              INVESTMENT. NO FINANCIAL GAINS ARE GUARANTEED. WE ACCEPT NO
+              LIABILITY FOR ITS VALUE.
+            </p>
+            <p className="text-gray-300 text-sm max-w-3xl mx-auto">
+              $ORPE IS NOT AFFILIATED WITH MATT FURIE OR PEPE THE FROG. IT'S AN
+              ORANGE TRIBUTE TO THE GREEN FROG MEME.
             </p>
             <p className="text-orange-500 font-press-start text-sm">
               Powered by degeneracy.
