@@ -15,7 +15,7 @@ export const site = {
 export const loreStories = [
   {
     title: "The Pond of Apathy",
-    lore: "Once, the meme world was dull and green. Frogs sat frowning in a lifeless pond where every joke felt recycled.",
+    lore: "testing 123",
     image: "/lore-1.png",
     alt: "Muted green swamp with fog, hunched frogs on phones, faint orange ripple",
   },
