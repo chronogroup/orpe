@@ -12,10 +12,10 @@ export function LoadingScreen() {
       setOpacity(1);
     }, 50);
 
-    // Start fade out after 4 seconds
+    // Start fade out after 2.5 seconds
     const fadeOutTimer = setTimeout(() => {
       setOpacity(0);
-    }, 4000);
+    }, 2500);
 
     return () => {
       clearTimeout(fadeInTimer);
