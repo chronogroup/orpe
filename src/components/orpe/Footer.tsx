@@ -6,8 +6,11 @@ import { site } from "@/config/site";
 
 // Lazy-loaded QR code component
 const QRCode = ({ value }: { value: string }) => {
-  const [QRCodeComponent, setQRCodeComponent] =
-    useState<React.ComponentType<any> | null>(null);
+  const [QRCodeComponent, setQRCodeComponent] = useState<React.ComponentType<{
+    value: string;
+    size?: number;
+    style?: React.CSSProperties;
+  }> | null>(null);
 
   useState(() => {
     import("react-qr-code").then((module) => {
@@ -32,12 +35,6 @@ const QRCode = ({ value }: { value: string }) => {
       />
     </div>
   );
-};
-
-// Utility function to truncate address in the middle
-const middleTruncate = (address: string, left = 6, right = 4): string => {
-  if (address.length <= left + right) return address;
-  return `${address.slice(0, left)}...${address.slice(-right)}`;
 };
 
 // Utility function to build explorer URL
@@ -164,8 +161,8 @@ export function Footer() {
               LIABILITY FOR ITS VALUE.
             </p>
             <p className="text-gray-300 text-sm max-w-3xl mx-auto">
-              $ORPE IS NOT AFFILIATED WITH MATT FURIE OR PEPE THE FROG. IT'S AN
-              ORANGE TRIBUTE TO THE GREEN FROG MEME.
+              $ORPE IS NOT AFFILIATED WITH MATT FURIE OR PEPE THE FROG.
+              IT&apos;S AN ORANGE TRIBUTE TO THE GREEN FROG MEME.
             </p>
             <p className="text-orange-500 font-press-start text-sm">
               Powered by degeneracy.

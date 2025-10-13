@@ -1,7 +1,5 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
-import { IconButton } from "@/components/ui/IconButton";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Header } from "@/components/orpe/Header";
