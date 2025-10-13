@@ -31,11 +31,11 @@ export function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full">
       <div
-        className={`transition-all duration-250 ease-in-out ${
+        className={`transition-all duration-300 ease-in-out ${
           isScrolled
-            ? "bg-gradient-to-br from-zinc-900 via-orange-500/10 to-zinc-900 backdrop-blur-sm border-b border-orange-500/20 shadow-lg"
+            ? "bg-gradient-to-br from-zinc-900/95 via-orange-500/10 to-zinc-900/95 backdrop-blur-md border-b border-orange-500/20 shadow-xl"
             : "bg-transparent"
         }`}>
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-20">

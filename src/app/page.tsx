@@ -17,7 +17,7 @@ export default function Home() {
     <div className="min-h-screen bg-zinc-900">
       <Header />
 
-      <main>
+      <main className="pt-16">
         {/* Hero Section */}
         <Section id="hero" variant="hero">
           <Container>
