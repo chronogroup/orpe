@@ -16,12 +16,20 @@ type GtagWindow = Window &
 
 export function HeroContactAddress() {
   const [copied, setCopied] = useState(false);
+  const [error, setError] = useState(false);
+  const [flash, setFlash] = useState(false);
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(site.contract);
       setCopied(true);
-      setTimeout(() => setCopied(false), 900);
+      setFlash(true);
+      setError(false);
+
+      setTimeout(() => {
+        setCopied(false);
+        setFlash(false);
+      }, 900);
 
       // Analytics event
       if (typeof window !== "undefined" && "gtag" in window) {
@@ -31,6 +39,10 @@ export function HeroContactAddress() {
       }
     } catch (err) {
       console.error("Failed to copy: ", err);
+      setError(true);
+      setCopied(false);
+      setFlash(false);
+      setTimeout(() => setError(false), 1200);
     }
   };
 
@@ -51,13 +63,24 @@ export function HeroContactAddress() {
     <button
       onClick={handleCopy}
       onKeyDown={handleKeyDown}
-      className="hero-contact-btn inline-flex items-center px-4 py-2 bg-zinc-900/80 backdrop-blur-sm border border-orange-500/30 rounded-lg text-orange-500 text-sm font-mono hover:bg-zinc-900 hover:border-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-zinc-900 transition-all duration-200"
+      className="hero-contact-btn contract-address-highlight inline-flex items-center px-4 py-2 bg-zinc-900/80 backdrop-blur-sm border border-orange-500/30 rounded-lg text-orange-500 text-sm font-mono hover:bg-zinc-900 hover:border-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-zinc-900 transition-all duration-200 cursor-pointer"
       aria-label={`Copy contract address: ${site.contract}`}
       aria-live="polite">
-      {copied ? (
+      {error ? (
+        <>
+          <span className="text-red-400 font-medium text-xs sm:text-sm">
+            Copy failed
+          </span>
+        </>
+      ) : copied ? (
         <>
           <Check size={14} className="mr-2 text-green-400" />
-          <span className="text-green-400 font-medium">Copied!</span>
+          <span
+            className={`text-green-400 font-medium ${
+              flash ? "copy-flash" : ""
+            }`}>
+            Copied!
+          </span>
         </>
       ) : (
         <>
