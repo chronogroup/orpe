@@ -80,7 +80,9 @@ export function Footer() {
             {/* Chain Badge */}
             <div className="flex items-center justify-center mb-4">
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/30">
-                <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                <div className="w-6 h-6 mr-3 flex items-center justify-center">
+                  <img src="/solanaLogo.svg" alt="Solana" className="w-6 h-6" />
+                </div>
                 <span className="text-orange-500 text-sm font-medium">
                   {site.chain.name}
                 </span>
@@ -89,10 +91,18 @@ export function Footer() {
 
             {/* Address Container */}
             <div className="bg-zinc-900 rounded-lg p-4 mb-6">
-              <div className="address-container overflow-x-auto">
-                <p className="text-orange-500 font-mono text-sm whitespace-nowrap">
-                  {site.contract}
-                </p>
+              <div className="flex items-center justify-between">
+                <div className="flex-1 min-w-0">
+                  <p className="text-orange-500 font-mono text-sm truncate">
+                    {site.contract}
+                  </p>
+                </div>
+                {site.chain.verified && (
+                  <div className="flex items-center ml-3 text-green-400 flex-shrink-0">
+                    <Check size={16} className="mr-1" />
+                    <span className="text-xs font-medium">Verified</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -180,17 +190,6 @@ export function Footer() {
                 ORPE 2024–{currentYear}
               </span>
             </div>
-
-            {/* Verified Badge */}
-            {site.chain.verified && (
-              <a
-                href={`${site.chain.explorerBase}/address/${site.contract}#code`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-gray-400 hover:text-orange-500 transition-colors duration-200">
-                Verified on {site.chain.explorerName}
-              </a>
-            )}
           </div>
         </div>
       </div>

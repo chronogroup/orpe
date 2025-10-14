@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 :root {
   --background: #18181b;
@@ -497,5 +496,455 @@ body {
   .footer-explorer-btn:hover,
   .footer-qr-toggle:hover {
     transform: none;
+  }
+}
+
+/* Hero CTA Styles - Chris Raroque-style interactions */
+.hero-buy-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-buy-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 40px -12px rgba(249, 115, 22, 0.5);
+}
+
+.hero-buy-btn:active {
+  transform: scale(0.98);
+  transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-buy-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.hero-buy-btn:hover::before {
+  left: 100%;
+}
+
+.hero-contact-btn {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-contact-btn:active {
+  transform: scale(0.98);
+  transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-social-btn {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-social-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.hero-social-btn:active {
+  transform: scale(0.95);
+  transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Staggered fade-in for secondary actions */
+.hero-secondary-actions {
+  animation: fadeSlideIn 300ms cubic-bezier(0.4, 0, 0.2, 1) 100ms both;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion for hero CTA */
+@media (prefers-reduced-motion: reduce) {
+  .hero-buy-btn,
+  .hero-social-btn {
+    transition: background-color 200ms, color 200ms, border-color 200ms;
+  }
+
+  .hero-buy-btn:hover,
+  .hero-buy-btn:active,
+  .hero-social-btn:hover,
+  .hero-social-btn:active,
+  .hero-contact-btn:active {
+    transform: none;
+  }
+
+  .hero-buy-btn::before {
+    display: none;
+  }
+
+  .hero-secondary-actions {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  @keyframes fadeSlideIn {
+    from,
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* ========================================
+   HERO PREMIUM ANIMATIONS
+   ======================================== */
+
+/* Keyframes for hero entrance reveal */
+@keyframes heroFadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keyframes for avatar halo glow */
+@keyframes haloGlow {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* Keyframes for avatar halo sway */
+@keyframes haloSway {
+  0%,
+  100% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
+}
+
+/* Keyframes for coin drift */
+@keyframes coinDrift {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100px) translateX(10px);
+    opacity: 0;
+  }
+}
+
+/* Keyframes for background gradient drift */
+@keyframes gradientDrift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 4% 50%;
+  }
+}
+
+/* Keyframes for sparkle sweep */
+@keyframes sparkleSweep {
+  from {
+    background-position: -200% center;
+  }
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Hero reveal classes */
+.hero-reveal-avatar {
+  opacity: 0;
+  transform: scale(0.96);
+  animation: heroFadeSlideUp 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0ms;
+}
+
+.hero-reveal-word-1 {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeSlideUp 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 100ms;
+}
+
+.hero-reveal-word-2 {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeSlideUp 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 200ms;
+}
+
+.hero-reveal-tagline {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeSlideUp 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 300ms;
+}
+
+.hero-reveal-cta {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeSlideUp 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 400ms;
+}
+
+.hero-reveal-secondary {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeSlideUp 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 500ms;
+}
+
+/* Avatar halo (pseudo-element) */
+.avatar-halo {
+  position: relative;
+}
+
+.avatar-halo::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(249, 115, 22, 0.4) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  animation: haloGlow 3.5s ease-in-out infinite,
+    haloSway 6s ease-in-out infinite;
+}
+
+/* Coin specs */
+.coin-spec {
+  position: absolute;
+  opacity: 0;
+  animation: coinDrift 12s ease-in-out infinite;
+}
+
+.coin-spec:nth-child(1) {
+  animation-delay: 0s;
+  left: 20%;
+}
+
+.coin-spec:nth-child(2) {
+  animation-delay: 3s;
+  left: 40%;
+}
+
+.coin-spec:nth-child(3) {
+  animation-delay: 6s;
+  left: 60%;
+}
+
+.coin-spec:nth-child(4) {
+  animation-delay: 9s;
+  left: 80%;
+}
+
+/* Background gradient drift */
+.gradient-drift {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -10;
+  background: linear-gradient(
+    135deg,
+    rgba(249, 115, 22, 0.05) 0%,
+    transparent 50%,
+    rgba(249, 115, 22, 0.08) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientDrift 14s ease-in-out infinite;
+}
+
+/* Title hover effect */
+.hero-title-hover {
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-title-hover:hover {
+  transform: scale(1.01) rotate(1deg);
+}
+
+/* CTA button effects */
+.hero-cta-btn {
+  transition: all 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.hero-cta-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.4);
+}
+
+.hero-cta-btn:active {
+  transform: scale(0.98);
+  transition-duration: 90ms;
+}
+
+/* Contract chip gold flash */
+.copy-flash {
+  animation: goldFlash 700ms ease-out;
+}
+
+@keyframes goldFlash {
+  0% {
+    color: rgb(251, 191, 36);
+  }
+  100% {
+    color: rgb(34, 197, 94);
+  }
+}
+
+/* Social button underline sweep - REMOVED */
+/* Contract Address Blinking Highlight */
+.contract-address-highlight {
+  animation: contractBlink 2s ease-in-out infinite;
+}
+
+@keyframes contractBlink {
+  0%,
+  100% {
+    background-color: rgba(249, 115, 22, 0.1);
+    border-color: rgba(249, 115, 22, 0.3);
+  }
+  50% {
+    background-color: rgba(249, 115, 22, 0.3);
+    border-color: rgba(249, 115, 22, 0.6);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+  }
+}
+
+/* No longer using underline animation on social buttons */
+
+/* Social button sparkle effect */
+.social-btn-sparkle {
+  position: relative;
+  overflow: hidden;
+}
+
+.social-btn-sparkle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(249, 115, 22, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-position: -200% center;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.social-btn-sparkle.sparkle-active::before {
+  animation: sparkleSweep 250ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 1;
+}
+
+/* Premium animations - Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all hero animations */
+  .hero-reveal-avatar,
+  .hero-reveal-word-1,
+  .hero-reveal-word-2,
+  .hero-reveal-tagline,
+  .hero-reveal-cta,
+  .hero-reveal-secondary {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Disable avatar halo */
+  .avatar-halo::before {
+    animation: none;
+    opacity: 0.7;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Hide coin specs */
+  .coin-spec {
+    display: none;
+  }
+
+  /* Disable gradient drift */
+  .gradient-drift {
+    animation: none;
+  }
+
+  /* Disable CTA scale, keep color only */
+  .hero-cta-btn:hover {
+    transform: none;
+  }
+
+  .hero-cta-btn:active {
+    transform: none;
+  }
+
+  /* Disable title hover */
+  .hero-title-hover:hover {
+    transform: none;
+  }
+
+  /* Disable social button sparkle effect */
+  .social-btn-sparkle::before {
+    display: none;
+  }
+
+  /* Keep copy flash but no animation */
+  .copy-flash {
+    animation: none;
+    color: rgb(34, 197, 94);
   }
 }

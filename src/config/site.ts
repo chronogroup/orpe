@@ -1,13 +1,21 @@
 export const site = {
-  contract: "0x1234567890abcdef1234567890abcdef12345678",
+  contract: "8LWKE6EiFBRsBSeHsZHqgCFaq3qxh9o1VpD6htK6mJV5",
   name: "ORPE",
   description: "Orange is the new green 🍊🐸",
+  buyUrl:
+    "https://raydium.io/swap/?inputCurrency=sol&outputCurrency=8LWKE6EiFBRsBSeHsZHqgCFaq3qxh9o1VpD6htK6mJV5&utm_source=orpe&utm_medium=hero&utm_campaign=buy",
+  socials: {
+    twitter: "https://twitter.com/orpe?utm_source=orpe&utm_medium=hero",
+    telegram: "https://t.me/orpe?utm_source=orpe&utm_medium=hero",
+    dexscreener:
+      "https://dexscreener.com/solana/8LWKE6EiFBRsBSeHsZHqgCFaq3qxh9o1VpD6htK6mJV5?utm_source=orpe&utm_medium=hero",
+  },
   chain: {
-    name: "Ethereum",
-    short: "ETH",
-    icon: "ethereum",
-    explorerBase: "https://etherscan.io",
-    explorerName: "Etherscan",
+    name: "Solana",
+    short: "SOL",
+    icon: "solana",
+    explorerBase: "https://solscan.io",
+    explorerName: "Solscan",
     verified: true,
   },
 } as const;

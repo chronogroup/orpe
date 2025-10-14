@@ -25,32 +25,17 @@ export function LoadingScreen() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-900 transition-opacity duration-500"
+      className="fixed inset-0 z-50 transition-opacity duration-500 w-full h-full min-h-screen"
       style={{ opacity }}>
-      {/* Loading Image with Gradient Fade on Edges */}
-      <div className="relative">
-        {/* Radial gradient overlay for seamless edge fading */}
-        <div
-          className="absolute inset-0 z-10 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, transparent 30%, rgba(24, 24, 27, 0.3) 60%, rgba(24, 24, 27, 0.7) 80%, rgb(24, 24, 27) 100%)",
-          }}
-        />
-
-        {/* Loading GIF */}
-        <div className="relative">
-          <Image
-            src="/loading image.gif"
-            alt="Loading..."
-            width={400}
-            height={400}
-            priority
-            unoptimized
-            className="object-contain"
-          />
-        </div>
-      </div>
+      {/* Full-screen Loading GIF */}
+      <Image
+        src="/loading image.gif"
+        alt="Loading..."
+        fill
+        priority
+        unoptimized
+        className="object-cover w-full h-full"
+      />
     </div>
   );
 }
