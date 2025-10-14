@@ -47,7 +47,7 @@ export default function Home() {
               <p className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
                 <span className="text-gray-300">Orange is the new </span>
                 <span className="text-teal-500">green</span>
-                <span className="text-gray-300"> 🍊🐸</span>
+                <span className="text-gray-300"> 🐸</span>
               </p>
 
               {/* CTA Buttons */}
