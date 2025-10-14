@@ -2,6 +2,14 @@ export const site = {
   contract: "8LWKE6EiFBRsBSeHsZHqgCFaq3qxh9o1VpD6htK6mJV5",
   name: "ORPE",
   description: "Orange is the new green 🍊🐸",
+  buyUrl:
+    "https://raydium.io/swap/?inputCurrency=sol&outputCurrency=8LWKE6EiFBRsBSeHsZHqgCFaq3qxh9o1VpD6htK6mJV5&utm_source=orpe&utm_medium=hero&utm_campaign=buy",
+  socials: {
+    twitter: "https://twitter.com/orpe?utm_source=orpe&utm_medium=hero",
+    telegram: "https://t.me/orpe?utm_source=orpe&utm_medium=hero",
+    dexscreener:
+      "https://dexscreener.com/solana/8LWKE6EiFBRsBSeHsZHqgCFaq3qxh9o1VpD6htK6mJV5?utm_source=orpe&utm_medium=hero",
+  },
   chain: {
     name: "Solana",
     short: "SOL",
