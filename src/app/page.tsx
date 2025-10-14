@@ -90,8 +90,8 @@ export default function Home() {
                 description="ORPE Tokens"
                 icon="1B"
                 variant="default"
-                verificationLink="#etherscan"
-                verificationLabel="View on Etherscan"
+                verificationLink="#solscan"
+                verificationLabel="View on Solscan"
               />
 
               {/* Liquidity Card */}

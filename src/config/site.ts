@@ -1,13 +1,13 @@
 export const site = {
-  contract: "0x1234567890abcdef1234567890abcdef12345678",
+  contract: "8LWKE6EiFBRsBSeHsZHqgCFaq3qxh9o1VpD6htK6mJV5",
   name: "ORPE",
   description: "Orange is the new green 🍊🐸",
   chain: {
-    name: "Ethereum",
-    short: "ETH",
-    icon: "ethereum",
-    explorerBase: "https://etherscan.io",
-    explorerName: "Etherscan",
+    name: "Solana",
+    short: "SOL",
+    icon: "solana",
+    explorerBase: "https://solscan.io",
+    explorerName: "Solscan",
     verified: true,
   },
 } as const;
