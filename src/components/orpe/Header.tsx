@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Logo } from "./Logo";
 import { Navigation } from "./Navigation";
 import { ContactAddress } from "./ContactAddress";
+import { Button } from "@/components/ui/Button";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,16 +39,22 @@ export function Header() {
             ? "bg-gradient-to-br from-zinc-900 via-orange-500/10 to-zinc-900 backdrop-blur-sm border-b border-orange-500/20 shadow-lg"
             : "bg-transparent"
         }`}>
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Logo />
+            {/* Left Container - Logo */}
+            <div className="flex-shrink-0">
+              <Logo />
+            </div>
 
-            {/* Contract Address */}
-            <div className="hidden md:block">
+            {/* Middle Container - CA (Desktop only) */}
+            <div className="hidden lg:flex items-center">
               <ContactAddress />
             </div>
 
-            <Navigation items={navigationItems} />
+            {/* Right Container - Navigation Menu */}
+            <div className="flex-shrink-0">
+              <Navigation items={navigationItems} />
+            </div>
           </div>
         </div>
       </div>

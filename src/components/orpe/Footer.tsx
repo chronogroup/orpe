@@ -164,7 +164,7 @@ export function Footer() {
               $ORPE IS NOT AFFILIATED WITH MATT FURIE OR PEPE THE FROG.
               IT&apos;S AN ORANGE TRIBUTE TO THE GREEN FROG MEME.
             </p>
-            <p className="text-orange-500 font-press-start text-sm">
+            <p className="text-orange-500 font-pixel text-sm">
               Powered by degeneracy.
             </p>
           </div>
@@ -176,7 +176,7 @@ export function Footer() {
               <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-400 rounded-full flex items-center justify-center">
                 <span className="text-zinc-900 text-sm font-bold">O</span>
               </div>
-              <span className="text-orange-500 font-press-start text-sm">
+              <span className="text-orange-500 font-pixel text-sm">
                 ORPE 2024–{currentYear}
               </span>
             </div>

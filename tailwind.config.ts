@@ -16,6 +16,9 @@ const config: Config = {
         sans: ["var(--font-inter)", "Arial", "sans-serif"],
         "space-grotesk": ["var(--font-space-grotesk)", "sans-serif"],
         "press-start": ["Press Start 2P", "monospace"],
+        pixel: ["Press Start 2P", "monospace"],
+        orbitron: ["Orbitron", "monospace"],
+        vt323: ["VT323", "monospace"],
       },
     },
   },
@@ -23,4 +26,3 @@ const config: Config = {
 };
 
 export default config;
-

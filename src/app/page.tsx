@@ -19,7 +19,7 @@ export default function Home() {
         {/* Hero Section */}
         <Section id="hero" variant="hero">
           <Container>
-            <div className="text-center">
+            <div className="text-center max-w-full overflow-hidden">
               {/* Hero Image */}
               <div className="mb-8">
                 <Image
@@ -32,14 +32,9 @@ export default function Home() {
               </div>
 
               {/* Title */}
-              <h1 className="text-6xl lg:text-8xl font-press-start text-orange-500 mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl pixel-text-orange mb-6 px-4 text-center break-words">
                 Orange Pepe
               </h1>
-
-              {/* Subtitle */}
-              <h2 className="text-2xl lg:text-4xl font-press-start text-white mb-4">
-                Welcome to Orpe
-              </h2>
 
               {/* Tagline */}
               <p className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
@@ -68,7 +63,7 @@ export default function Home() {
         <Section id="lore" className="py-20 lg:py-32">
           <Container>
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-press-start text-orange-500 mb-4">
+              <h2 className="text-2xl lg:text-5xl font-pixel-large text-orange-500 mb-4">
                 The Lore of ORPE
               </h2>
               <p className="text-xl text-gray-300">Discover the origin story</p>
@@ -81,7 +76,7 @@ export default function Home() {
         <Section id="tokenomics" variant="gradient">
           <Container>
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-press-start text-orange-500 mb-4">
+              <h2 className="text-2xl lg:text-5xl font-pixel-large text-orange-500 mb-4">
                 Tokenomics
               </h2>
               <p className="text-xl text-gray-300">Simple. Fair. Orange.</p>
@@ -143,7 +138,7 @@ export default function Home() {
 
             <Container>
               <div className="text-center mb-16">
-                <h2 className="text-4xl font-press-start text-orange-500 mb-4">
+                <h2 className="text-2xl lg:text-5xl font-pixel-large text-orange-500 mb-4">
                   Join the Community
                 </h2>
                 <p className="text-xl text-gray-300">

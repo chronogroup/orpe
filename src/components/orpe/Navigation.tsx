@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
+import { ContactAddress } from "./ContactAddress";
 import { smoothScrollToSection, getHeaderHeight } from "@/lib/scroll";
 
 interface NavigationItem {
@@ -64,22 +65,45 @@ export function Navigation({ items, className = "" }: NavigationProps) {
 
   return (
     <nav className={`flex items-center space-x-8 ${className}`}>
-      {items.map((item) => (
+      {/* Desktop Navigation */}
+      <div className="hidden lg:flex items-center space-x-6">
         <button
-          key={item.sectionId}
-          onClick={() => scrollToSection(item.sectionId)}
-          onMouseEnter={() => handleFirstHover(item.sectionId)}
+          onClick={() => scrollToSection("community")}
+          onMouseEnter={() => handleFirstHover("community")}
           className={`nav-link focus:outline-none focus:text-orange-500 relative group cursor-pointer ${
-            activeSection === item.sectionId
+            activeSection === "community"
               ? "text-orange-500"
               : "text-white hover:text-orange-500"
-          } ${!hoveredItems.has(item.sectionId) ? "first-hover" : ""}`}>
-          {item.label}
+          } ${!hoveredItems.has("community") ? "first-hover" : ""}`}>
+          Community
         </button>
-      ))}
-      <Button variant="default" size="sm">
-        Buy ORPE
-      </Button>
+        <button
+          onClick={() => scrollToSection("tokenomics")}
+          onMouseEnter={() => handleFirstHover("tokenomics")}
+          className={`nav-link focus:outline-none focus:text-orange-500 relative group cursor-pointer ${
+            activeSection === "tokenomics"
+              ? "text-orange-500"
+              : "text-white hover:text-orange-500"
+          } ${!hoveredItems.has("tokenomics") ? "first-hover" : ""}`}>
+          Tokenomics
+        </button>
+        <Button variant="default" size="sm">
+          Buy ORPE
+        </Button>
+      </div>
+
+      {/* Tablet Navigation */}
+      <div className="hidden md:flex lg:hidden items-center space-x-4">
+        <ContactAddress />
+        <Button variant="default" size="sm">
+          Buy ORPE
+        </Button>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div className="flex md:hidden items-center">
+        <ContactAddress />
+      </div>
     </nav>
   );
 }
