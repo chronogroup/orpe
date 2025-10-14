@@ -1,7 +1,5 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
-import { IconButton } from "@/components/ui/IconButton";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Header } from "@/components/orpe/Header";
@@ -47,7 +45,7 @@ export default function Home() {
               <p className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
                 <span className="text-gray-300">Orange is the new </span>
                 <span className="text-teal-500">green</span>
-                <span className="text-gray-300"> 🍊🐸</span>
+                <span className="text-gray-300"> 🐸</span>
               </p>
 
               {/* CTA Buttons */}
