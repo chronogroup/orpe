@@ -27,15 +27,17 @@ export function LoadingScreen() {
     <div
       className="fixed inset-0 z-50 transition-opacity duration-500 w-full h-full min-h-screen"
       style={{ opacity }}>
-      {/* Full-screen Loading GIF */}
-      <Image
-        src="/loading image.gif"
-        alt="Loading..."
-        fill
-        priority
-        unoptimized
-        className="object-cover w-full h-full"
-      />
+      {/* Full-screen Loading with ORPE Logo */}
+      <div className="flex items-center justify-center w-full h-full bg-zinc-900">
+        <Image
+          src="/orpe logo.svg"
+          alt="ORPE Logo"
+          width={200}
+          height={200}
+          priority
+          className="object-contain"
+        />
+      </div>
     </div>
   );
 }
