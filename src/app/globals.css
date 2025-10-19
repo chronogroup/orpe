@@ -185,6 +185,13 @@ body {
   z-index: 10;
 }
 
+/* Thinner side tint on small screens */
+@media (max-width: 640px) {
+  .fade-overlay {
+    width: 24px; /* Much thinner on mobile */
+  }
+}
+
 .fade-left {
   left: 0;
   background: linear-gradient(
@@ -953,49 +960,113 @@ body {
    PRELOADER ANIMATIONS
    ======================================== */
 
-/* Particle orbit rotation */
-@keyframes orbit {
-  from {
-    transform: rotate(0deg);
+/* Ripple scale and fade - serene water ripple effect */
+@keyframes rippleScaleFade {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
   }
-  to {
-    transform: rotate(360deg);
+  40% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(8);
+    opacity: 0;
   }
 }
 
-/* Particle opacity flicker */
-@keyframes flicker {
+/* Intense orange glow pulse - peaking out around lily pad */
+@keyframes lilyGlowPulse {
   0%,
   100% {
-    opacity: 0.5;
+    transform: scale(0.98);
+    opacity: 0.8;
   }
   50% {
+    transform: scale(1.02);
     opacity: 1;
   }
 }
 
-/* Logo glow pulse - slow blink (once per second) */
-@keyframes logoGlowPulse {
-  0% {
-    opacity: 0.3;
-    filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.3))
-      drop-shadow(0 0 16px rgba(255, 192, 77, 0.2));
-  }
-  50% {
-    opacity: 1;
-    filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.8))
-      drop-shadow(0 0 40px rgba(255, 192, 77, 0.6));
-  }
+/* Pepe glow halo animation */
+@keyframes pepeGlowPulse {
+  0%,
   100% {
-    opacity: 0.3;
-    filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.3))
-      drop-shadow(0 0 16px rgba(255, 192, 77, 0.2));
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
   }
 }
 
-/* Logo glow class - blinks once per second (1s per cycle) */
-.logo-glow {
-  animation: logoGlowPulse 1s ease-in-out infinite;
+/* Ripple container - screen-wide expansion */
+.ripple-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+/* Individual ripple ring - soft orange concentric circles that expand screen-wide */
+.ripple-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin-top: -150px;
+  margin-left: -150px;
+  border: 2px solid rgba(249, 115, 22, 0.5);
+  border-radius: 50%;
+  animation: rippleScaleFade 5.333s ease-out var(--delay) infinite;
+  will-change: transform, opacity;
+  pointer-events: none;
+  opacity: 0; /* Hidden by default */
+}
+
+/* Show ripples only when their animation starts */
+.ripple-ring-1 {
+  animation: rippleScaleFade 5.333s ease-out 0s infinite;
+}
+
+.ripple-ring-2 {
+  animation: rippleScaleFade 5.333s ease-out 1.333s infinite;
+}
+
+.ripple-ring-3 {
+  animation: rippleScaleFade 5.333s ease-out 2.666s infinite;
+}
+
+.ripple-ring-4 {
+  animation: rippleScaleFade 5.333s ease-out 3.999s infinite;
+}
+
+/* Lily glow pulse animation */
+.lily-glow-pulse {
+  animation: lilyGlowPulse 3s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+/* Orange Pepe glow halo */
+.orange-pepe-glow {
+  background: radial-gradient(
+    circle,
+    rgba(249, 115, 22, 0.4) 0%,
+    rgba(249, 115, 22, 0.2) 40%,
+    transparent 70%
+  );
+  animation: pepeGlowPulse 3s ease-in-out infinite;
+  will-change: transform, opacity;
+  border-radius: 50%;
+  filter: blur(15px);
 }
 
 /* Preloader fade-out exit animation */
@@ -1018,37 +1089,59 @@ body {
 
 /* Reduced motion for preloader */
 @media (prefers-reduced-motion: reduce) {
-  .preloader-contain > div {
+  /* Disable ripple animations */
+  .ripple-ring {
     animation: none !important;
   }
 
-  .logo-glow {
+  /* Show only one static ring */
+  .ripple-ring:nth-child(1) {
+    opacity: 0.3;
+    transform: scale(1.5);
+  }
+
+  .ripple-ring:nth-child(2),
+  .ripple-ring:nth-child(3),
+  .ripple-ring:nth-child(4) {
+    display: none;
+  }
+
+  /* Disable glow pulse */
+  .lily-glow-pulse {
     animation: none !important;
-    opacity: 1 !important;
-    filter: drop-shadow(0 0 15px rgba(249, 115, 22, 0.5))
-      drop-shadow(0 0 30px rgba(255, 192, 77, 0.3));
+    opacity: 0.6;
+    transform: scale(1);
   }
 
-  @keyframes orbit {
+  /* Disable Pepe glow animation */
+  .orange-pepe-glow {
+    animation: none !important;
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  /* Override keyframes to be static */
+  @keyframes rippleScaleFade {
     from,
     to {
-      transform: rotate(0deg);
+      transform: scale(1);
+      opacity: 0.6;
     }
   }
 
-  @keyframes flicker {
+  @keyframes lilyGlowPulse {
     from,
     to {
-      opacity: 0.7;
+      transform: scale(1);
+      opacity: 0.6;
     }
   }
 
-  @keyframes logoGlowPulse {
+  @keyframes pepeGlowPulse {
     from,
     to {
-      opacity: 1;
-      filter: drop-shadow(0 0 15px rgba(249, 115, 22, 0.5))
-        drop-shadow(0 0 30px rgba(255, 192, 77, 0.3));
+      transform: scale(1);
+      opacity: 0.6;
     }
   }
 }
@@ -1064,5 +1157,71 @@ body {
     to {
       opacity: 0.7;
     }
+  }
+}
+
+/* Meme Studio Utility Classes */
+.card {
+  background-color: rgba(24, 24, 27, 0.8);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.1);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: #f97316;
+  color: #18181b;
+  border: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #ea580c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Reduced motion for meme studio */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .btn {
+    transition: none;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    transform: none;
+  }
+
+  .btn-primary:active:not(:disabled) {
+    transform: none;
   }
 }

@@ -8,15 +8,15 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    // Wait for 2.5 seconds, then start exit animation
+    // Total preloader time: 2.5s (2.2s display + 300ms exit animation)
     const loadTimer = setTimeout(() => {
       setIsExiting(true);
-    }, 2500);
+    }, 2200);
 
-    // Remove preloader completely after exit animation (2.5s + 300ms animation)
+    // Remove preloader completely after exit animation (2.5s total)
     const removeTimer = setTimeout(() => {
       setShowPreloader(false);
-    }, 2800);
+    }, 2500);
 
     return () => {
       clearTimeout(loadTimer);
