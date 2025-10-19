@@ -7,11 +7,9 @@ import { HeroSection } from "@/components/orpe/HeroSection";
 import { LoreCarousel } from "@/components/orpe/LoreCarousel";
 import { TokenomicsCard } from "@/components/orpe/TokenomicsCard";
 import { CommunityStats } from "@/components/orpe/CommunityStats";
-import { MemeGallery } from "@/components/orpe/MemeGallery";
 import { SocialButtons } from "@/components/orpe/SocialButtons";
+import { MemeStudio } from "@/components/orpe/MemeStudio";
 import { Footer } from "@/components/orpe/Footer";
-import { site } from "@/config/site";
-import { Coins, Users, TrendingUp } from "lucide-react";
 
 export default function Home() {
   return (
@@ -111,19 +109,16 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                {/* Left Column - Social Buttons & Stats */}
-                <div className="space-y-8">
-                  <SocialButtons />
-                  <CommunityStats holders={12500} telegramMembers={8200} />
-                </div>
-
-                {/* Right Column - Meme Gallery */}
-                <MemeGallery />
+              <div className="max-w-3xl mx-auto space-y-8">
+                <SocialButtons />
+                <CommunityStats holders={12500} telegramMembers={8200} />
               </div>
             </Container>
           </div>
         </Section>
+
+        {/* Meme Studio Section */}
+        <MemeStudio />
       </main>
 
       <Footer />
