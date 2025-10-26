@@ -5,8 +5,8 @@ export const site = {
   buyUrl:
     "https://raydium.io/swap/?inputCurrency=sol&outputCurrency=8LWKE6EiFBRsBSeHsZHqgCFaq3qxh9o1VpD6htK6mJV5&utm_source=orpe&utm_medium=hero&utm_campaign=buy",
   socials: {
-    twitter: "https://twitter.com/orpe?utm_source=orpe&utm_medium=hero",
-    telegram: "https://t.me/orpe?utm_source=orpe&utm_medium=hero",
+    twitter: "https://x.com/OrangePepeSol",
+    telegram: "https://t.me/OrangePepeSol",
     dexscreener:
       "https://dexscreener.com/solana/8LWKE6EiFBRsBSeHsZHqgCFaq3qxh9o1VpD6htK6mJV5?utm_source=orpe&utm_medium=hero",
   },

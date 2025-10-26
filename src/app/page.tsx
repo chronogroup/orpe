@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Header } from "@/components/orpe/Header";
 import { HeroSection } from "@/components/orpe/HeroSection";
 import { LoreCarousel } from "@/components/orpe/LoreCarousel";
-import { TokenomicsCard } from "@/components/orpe/TokenomicsCard";
+import { OrpenomicsCard } from "@/components/orpe/TokenomicsCard";
 import { CommunityStats } from "@/components/orpe/CommunityStats";
 import { SocialButtons } from "@/components/orpe/SocialButtons";
 import { MemeStudio } from "@/components/orpe/MemeStudio";
@@ -35,19 +35,19 @@ export default function Home() {
           </Container>
         </Section>
 
-        {/* Tokenomics Section */}
-        <Section id="tokenomics" variant="gradient">
+        {/* Orpenomics Section */}
+        <Section id="orpenomics" variant="gradient">
           <Container>
             <div className="text-center mb-16">
               <h2 className="text-2xl lg:text-5xl font-pixel-large text-orange-500 mb-4">
-                Tokenomics
+                Orpenomics
               </h2>
               <p className="text-xl text-gray-300">Simple. Fair. Orange.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Total Supply Card */}
-              <TokenomicsCard
+              <OrpenomicsCard
                 title="Total Supply"
                 value={1000000000}
                 description="ORPE Tokens"
@@ -58,7 +58,7 @@ export default function Home() {
               />
 
               {/* Liquidity Card */}
-              <TokenomicsCard
+              <OrpenomicsCard
                 title="Liquidity"
                 value={100}
                 description="Locked Forever"
@@ -69,7 +69,7 @@ export default function Home() {
               />
 
               {/* Team Wallet Card */}
-              <TokenomicsCard
+              <OrpenomicsCard
                 title="Team Wallet"
                 value={0}
                 description="Community Owned"
@@ -80,7 +80,7 @@ export default function Home() {
               />
 
               {/* Governance Card */}
-              <TokenomicsCard
+              <OrpenomicsCard
                 title="Governance"
                 value={100}
                 description="100% Holder-Led, No Dev Control"
@@ -118,7 +118,9 @@ export default function Home() {
         </Section>
 
         {/* Meme Studio Section */}
-        <MemeStudio />
+        <Section id="meme-studio">
+          <MemeStudio />
+        </Section>
       </main>
 
       <Footer />

@@ -65,7 +65,7 @@ export function MemeGallery({ className }: MemeGalleryProps) {
       <Card variant="default" className="h-full">
         <div className="flex flex-col h-full">
           <div className="flex justify-between items-center mb-8">
-            <h3 className="text-2xl font-bold text-white">Meme Gallery</h3>
+            <h3 className="text-xl font-semibold text-white">Gallery</h3>
             <Button
               onClick={shuffleMemes}
               variant="outline"

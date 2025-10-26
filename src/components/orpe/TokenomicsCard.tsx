@@ -6,7 +6,7 @@ import { IconButton } from "@/components/ui/IconButton";
 import { useCountUp } from "@/hooks/useCountUp";
 import { cn } from "@/lib/utils";
 
-interface TokenomicsCardProps {
+interface OrpenomicsCardProps {
   title: string;
   value: number;
   description: string;
@@ -17,7 +17,7 @@ interface TokenomicsCardProps {
   className?: string;
 }
 
-export function TokenomicsCard({
+export function OrpenomicsCard({
   title,
   value,
   description,
@@ -26,7 +26,7 @@ export function TokenomicsCard({
   verificationLink = "#",
   verificationLabel = "Verify",
   className,
-}: TokenomicsCardProps) {
+}: OrpenomicsCardProps) {
   const { count, elementRef } = useCountUp(value, {
     duration: 2000,
     startOnView: true,
@@ -63,7 +63,7 @@ export function TokenomicsCard({
       ref={elementRef}
       className={cn("fade-in-up card-hover-tilt h-full", className)}>
       <Card
-        variant="tokenomics"
+        variant="orpenomics"
         className="h-full flex flex-col justify-between">
         <div className="flex flex-col items-center text-center">
           <IconButton
