@@ -14,8 +14,11 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "ORPE - Orange is the new green",
+  title: "The Orange Pepe",
   description: "Welcome to Orpe - Orange is the new green 🍊🐸",
+  icons: {
+    icon: [{ url: "/orpe%20logo.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({

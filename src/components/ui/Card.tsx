@@ -12,7 +12,7 @@ const cardVariants = cva(
         gray: "bg-zinc-900 border-2 border-gray-600",
         purple: "bg-zinc-900 border-2 border-purple-500/30",
         stats: "bg-orange-500/10 border border-orange-500/20",
-        tokenomics:
+        orpenomics:
           "bg-zinc-900 border-2 border-orange-500/30 hover:border-orange-500/60 hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:-translate-y-1 hover:rotate-1",
       },
     },

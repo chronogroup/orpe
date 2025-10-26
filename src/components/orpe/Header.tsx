@@ -27,8 +27,9 @@ export function Header() {
   }, []);
 
   const navigationItems = [
-    { label: "Tokenomics", sectionId: "tokenomics" },
+    { label: "Orpenomics", sectionId: "orpenomics" },
     { label: "Community", sectionId: "community" },
+    { label: "Meme Studio", sectionId: "meme-studio" },
   ];
 
   return (

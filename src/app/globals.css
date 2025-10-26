@@ -254,7 +254,7 @@ body {
   overflow: hidden;
 }
 
-/* Tokenomics Animations */
+/* Orpenomics Animations */
 @keyframes glowPulse {
   0%,
   100% {
@@ -285,8 +285,8 @@ body {
   }
 }
 
-/* Tokenomics Background Shimmer - Removed continuous animation */
-.tokenomics-bg-shimmer {
+/* Orpenomics Background Shimmer - Removed continuous animation */
+.orpenomics-bg-shimmer {
   background: linear-gradient(
     90deg,
     transparent,

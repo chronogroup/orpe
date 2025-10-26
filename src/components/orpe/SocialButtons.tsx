@@ -2,6 +2,7 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
+import { site } from "@/config/site";
 
 interface SocialButtonsProps {
   className?: string;
@@ -12,7 +13,7 @@ export function SocialButtons({ className }: SocialButtonsProps) {
     <div className={cn("flex flex-col sm:flex-row gap-4", className)}>
       {/* X (Twitter) Button */}
       <a
-        href="https://x.com/orpe"
+        href={site.socials.twitter}
         target="_blank"
         rel="noopener noreferrer"
         className="social-btn-glow flex items-center justify-center space-x-3 px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 hover:scale-105 hover:shadow-lg min-h-12">
@@ -24,7 +25,7 @@ export function SocialButtons({ className }: SocialButtonsProps) {
 
       {/* Telegram Button */}
       <a
-        href="https://t.me/orpe"
+        href={site.socials.telegram}
         target="_blank"
         rel="noopener noreferrer"
         className="social-btn-glow flex items-center justify-center space-x-3 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg min-h-12">

@@ -294,11 +294,11 @@ export function MemeStudio() {
           </div>
         </div>
 
-        {/* Meme Gallery Section */}
+        {/* Gallery Section */}
         <div className="mt-16">
           <div className="text-center mb-12">
-            <h3 className="text-2xl lg:text-4xl font-pixel-large text-orange-500 mb-4">
-              Meme Gallery
+            <h3 className="text-xl lg:text-3xl font-pixel text-orange-500 mb-3">
+              Gallery
             </h3>
             <p className="text-lg text-gray-300">
               Check out some Orange Pepe classics

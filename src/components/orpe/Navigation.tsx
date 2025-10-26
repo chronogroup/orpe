@@ -78,14 +78,24 @@ export function Navigation({ items, className = "" }: NavigationProps) {
           Community
         </button>
         <button
-          onClick={() => scrollToSection("tokenomics")}
-          onMouseEnter={() => handleFirstHover("tokenomics")}
+          onClick={() => scrollToSection("orpenomics")}
+          onMouseEnter={() => handleFirstHover("orpenomics")}
           className={`nav-link focus:outline-none focus:text-orange-500 relative group cursor-pointer ${
-            activeSection === "tokenomics"
+            activeSection === "orpenomics"
               ? "text-orange-500"
               : "text-white hover:text-orange-500"
-          } ${!hoveredItems.has("tokenomics") ? "first-hover" : ""}`}>
-          Tokenomics
+          } ${!hoveredItems.has("orpenomics") ? "first-hover" : ""}`}>
+          Orpenomics
+        </button>
+        <button
+          onClick={() => scrollToSection("meme-studio")}
+          onMouseEnter={() => handleFirstHover("meme-studio")}
+          className={`nav-link focus:outline-none focus:text-orange-500 relative group cursor-pointer ${
+            activeSection === "meme-studio"
+              ? "text-orange-500"
+              : "text-white hover:text-orange-500"
+          } ${!hoveredItems.has("meme-studio") ? "first-hover" : ""}`}>
+          Meme Studio
         </button>
         <Button variant="default" size="sm">
           Buy ORPE
