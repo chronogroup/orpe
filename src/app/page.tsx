@@ -27,7 +27,7 @@ export default function Home() {
           <Container>
             <div className="text-center mb-12">
               <h2 className="text-2xl lg:text-5xl font-pixel-large text-orange-500 mb-4">
-                The Lore of ORPE
+                The Lore-pe
               </h2>
               <p className="text-xl text-gray-300">Discover the origin story</p>
             </div>

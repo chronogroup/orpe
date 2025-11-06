@@ -102,7 +102,7 @@ export function MemeStudio() {
       ctx.fillStyle = "white";
       ctx.strokeStyle = "black";
       ctx.lineWidth = Math.max(4, fontSize / 10);
-      ctx.font = `bold ${fontSize}px Impact, Arial Black, Arial, sans-serif`;
+      ctx.font = `bold ${fontSize}px "Comic Sans MS", "Comic Sans", cursive`;
 
       wrapAndDraw(
         ctx,
