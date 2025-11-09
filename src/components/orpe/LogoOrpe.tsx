@@ -57,7 +57,7 @@ export function LogoOrpe({ size = 104, className = "" }: LogoOrpeProps) {
         fill="#f97316"
         fontSize="10"
         fontWeight="bold"
-        fontFamily="Arial, sans-serif"
+        fontFamily="Comic Sans MS, Comic Sans, cursive"
         opacity="0.4">
         O
       </text>

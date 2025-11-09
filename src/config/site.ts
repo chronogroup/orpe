@@ -1,7 +1,7 @@
 export const site = {
   contract: "8LWKE6EiFBRsBSeHsZHqgCFaq3qxh9o1VpD6htK6mJV5",
   name: "ORPE",
-  description: "Orange is the new green 🍊🐸",
+  description: "NFA. DYORpe.",
   buyUrl:
     "https://raydium.io/swap/?inputCurrency=sol&outputCurrency=8LWKE6EiFBRsBSeHsZHqgCFaq3qxh9o1VpD6htK6mJV5&utm_source=orpe&utm_medium=hero&utm_campaign=buy",
   socials: {

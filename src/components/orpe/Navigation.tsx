@@ -68,16 +68,6 @@ export function Navigation({ items, className = "" }: NavigationProps) {
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center space-x-6">
         <button
-          onClick={() => scrollToSection("community")}
-          onMouseEnter={() => handleFirstHover("community")}
-          className={`nav-link focus:outline-none focus:text-orange-500 relative group cursor-pointer ${
-            activeSection === "community"
-              ? "text-orange-500"
-              : "text-white hover:text-orange-500"
-          } ${!hoveredItems.has("community") ? "first-hover" : ""}`}>
-          Community
-        </button>
-        <button
           onClick={() => scrollToSection("orpenomics")}
           onMouseEnter={() => handleFirstHover("orpenomics")}
           className={`nav-link focus:outline-none focus:text-orange-500 relative group cursor-pointer ${
@@ -86,6 +76,16 @@ export function Navigation({ items, className = "" }: NavigationProps) {
               : "text-white hover:text-orange-500"
           } ${!hoveredItems.has("orpenomics") ? "first-hover" : ""}`}>
           Orpenomics
+        </button>
+        <button
+          onClick={() => scrollToSection("community")}
+          onMouseEnter={() => handleFirstHover("community")}
+          className={`nav-link focus:outline-none focus:text-orange-500 relative group cursor-pointer ${
+            activeSection === "community"
+              ? "text-orange-500"
+              : "text-white hover:text-orange-500"
+          } ${!hoveredItems.has("community") ? "first-hover" : ""}`}>
+          Community
         </button>
         <button
           onClick={() => scrollToSection("meme-studio")}

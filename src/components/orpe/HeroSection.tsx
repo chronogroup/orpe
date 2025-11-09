@@ -113,19 +113,14 @@ export function HeroSection() {
             <span className={isVisible ? "hero-reveal-word-2" : ""}>Pepe</span>
           </h1>
 
-          {/* Tagline with green tint effect */}
+          {/* Tagline */}
           <p
             className={`text-xl lg:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto ${
               isVisible ? "hero-reveal-tagline" : ""
             }`}>
-            <span className="text-gray-300">Orange is the new </span>
-            <span
-              className={`transition-colors duration-300 ${
-                showGreenTint ? "text-green-400" : "text-teal-500"
-              }`}>
-              green
-            </span>
-            <span className="text-gray-300"> 🐸</span>
+            <span className="text-gray-300">NFA. DY</span>
+            <span className="text-orange-500">ORpe</span>
+            <span className="text-gray-300">.</span>
           </p>
 
           {/* Primary CTA */}
